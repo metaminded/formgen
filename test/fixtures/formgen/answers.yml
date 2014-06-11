@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  form_id: 
+  element_id: 
+  value: MyText
+
+two:
+  form_id: 
+  element_id: 
+  value: MyText
