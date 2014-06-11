@@ -1,0 +1,76 @@
+en:
+  activerecord:
+    attributes:
+      formgen/answer:
+        value: Answer
+      formgen/form:
+        title: Title
+      formgen/question:
+        language: Language
+        mandatory: Mandatory
+        question_type: Type
+        value: Question
+      formgen/reply:
+    models:
+      formgen/answer: Answer
+      formgen/form: Formular
+      formgen/question: Question
+      formgen/reply: Reply
+
+  formgen:
+    forms:
+      index:
+        form_overview: Formularoverview
+        new: New Formular
+      output:
+        submit: Submit answers
+
+
+
+de:
+  activerecord:
+    attributes:
+      formgen/answer:
+        value: Antwort
+      formgen/form:
+        title: Titel
+      formgen/question:
+        language: Sprache
+        mandatory: Verpflichtend
+        question_type: Typ
+        value: Frage
+      formgen/reply:
+    models:
+      formgen/answer: Antwort
+      formgen/form: Formular
+      formgen/question: Frage
+      formgen/reply: Rücksendung
+
+  formgen:
+    forms:
+      edit:
+        edit_form: Formular bearbeiten
+      index:
+        form_overview: Formularübersicht
+        new: Neues Formular
+      new:
+        new_form: Neues Formular erstellen
+      output:
+        submit: Antworten absenden
+      show:
+        answers: Antworten
+        mandatory: Pflichtfeld
+        preview: Vorschau
+        questions: Fragen
+        question: Frage
+        type: Typ
+    question:
+      type:
+        boolean: Ja/Nein-Wert
+        date: Datum
+        datetime: Datum mit Uhrzeit
+        float: Zahl mit Nachkommastellen
+        integer: Ganzzahl
+        string: Text
+        text: Langtext
+        time: Uhrzeit
