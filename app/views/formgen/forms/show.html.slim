@@ -1,0 +1,47 @@
+- bsat_page_title do
+  = @form.title
+
+- bsat_page_actions do |action|
+  - action.add t('.edit'), edit_form_path(@form)
+
+.row
+  .col-md-6
+    fieldset
+      legend = t('.questions')
+
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th = t('.question')
+            th = t('.mandatory')
+            th = t('.type')
+        tbody
+          - @form.questions.each do |question|
+            tr
+              td = question.value
+              td = fa_icon('check') if question.mandatory
+              td = t(Formgen::Question.t_types[question.question_type])
+
+  .col-md-6
+    fieldset
+      legend = t('.preview')
+      = render 'output', form: @form, options: {}
+
+.row
+  .col-md-12
+    fieldset
+      legend = t('.answers')
+
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th = t('.user')
+            - @form.questions.each do |question|
+              th = question.value
+        tbody
+          - @form.replies.each do |reply|
+            tr
+              // TODO: replace full_name with something more generic
+              td = reply.user.full_name if reply.user.present?
+              - reply.answers.each do |answer|
+                td = answer.value

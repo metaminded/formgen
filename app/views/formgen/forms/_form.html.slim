@@ -1,0 +1,31 @@
+= simple_nested_form_for @form do |f|
+  .row
+    .col-md-12
+      = f.input :title
+  .row
+    .col-md-12
+      = f.input :path
+  .row
+    .col-md-12
+      = f.input :email
+
+  = f.fields_for :questions do |question_form|
+    .row
+      .col-md-5
+        = question_form.input :value
+      .col-md-2.col-xs-5
+        = question_form.input :language, collection: %w{de en}
+      .col-md-3.col-xs-5
+        = question_form.input :question_type, collection: Formgen::Question.t_types, value_method: lambda { |obj| Formgen::Question.index_of_type obj }
+      .col-md-1.col-xs-1
+        = question_form.input :mandatory
+      .col-md-1.col-xs-1
+        = question_form.link_to_remove fa_icon('minus-square'), class: 'pull-right'
+
+  .row
+    .col-md-12
+      = f.link_to_add fa_icon('plus-square'), :questions, class: 'pull-right'
+
+  .row
+    .col-md-12
+      = f.button :submit
