@@ -7,17 +7,24 @@ require "formgen/version"
 Gem::Specification.new do |s|
   s.name        = "formgen"
   s.version     = Formgen::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Formgen."
-  s.description = "TODO: Description of Formgen."
+  s.authors     = ["Philipp Hirsch"]
+  s.email       = ["philipp.hirsch@metaminded.com"]
+  s.homepage    = ""
+  s.summary     = "Form generator for mouse users"
+  s.description = "Build your own forms and let others answer them"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.1.1"
+  s.add_dependency "jquery-rails", "~> 3.1.0"
+  s.add_dependency "tabulatr2"
+  s.add_dependency "simple_form", "~> 3.1.0.rc1"
+  s.add_dependency "nested_form", "~> 0.3.2"
+  s.add_dependency "sass-rails", "~> 4.0.2"
+  s.add_dependency "bootstrap-sass", "~> 3.1.0"
+  s.add_dependency "font-awesome-rails", "~> 4.0.3.1"
 
   s.add_development_dependency "sqlite3"
 end
