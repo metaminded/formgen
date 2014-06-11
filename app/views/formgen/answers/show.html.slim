@@ -1,0 +1,12 @@
+- bsat_page_title do
+  = t('.answer')
+
+- if @reply.user.present?
+  b = t('.reply_by', user: @reply.user.full_name)
+
+- @reply.answers.each do |answer|
+  .row
+    .col-md-4
+      = "#{answer.question.value}:"
+    .col-md-8
+      = answer.value
