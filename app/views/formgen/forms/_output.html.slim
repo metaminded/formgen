@@ -1,33 +1,37 @@
+- options ||= {}
+
 - if flash[:notice]
   .alert.alert-info
     = raw flash[:notice]
 
 = form_tag formgen.answers_path(form), method: :post do
   - form.questions.each do |question|
+    - value = question.answers.find_by(user: current_user).value if options[:remember].present? && options[:remember]
+
     .form-group
       - if Formgen::Question.types[question.question_type] == 'boolean'
         .checkbox
           = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: 'boolean control-label'
       - elsif Formgen::Question.types[question.question_type] == 'date'
         = label_tag question.field_name, question.value
-        = date_field_tag question.field_name, nil, class: 'form-control'
+        = date_field_tag question.field_name, value, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'datetime'
         = label_tag question.field_name, question.value
-        = datetime_field_tag question.field_name, nil, class: 'form-control'
+        = datetime_field_tag question.field_name, value, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'float'
         = label_tag question.field_name, question.value
-        = number_field_tag question.field_name, nil, step: 0.01, class: 'form-control'
+        = number_field_tag question.field_name, value, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'integer'
         = label_tag question.field_name, question.value
-        = number_field_tag question.field_name, nil, step: 1.0, class: 'form-control'
+        = number_field_tag question.field_name, value, step: 1.0, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'string'
         = label_tag question.field_name, question.value
-        = text_field_tag question.field_name, nil, class: 'form-control'
+        = text_field_tag question.field_name, value, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'text'
         = label_tag question.field_name, question.value
-        = text_area_tag question.field_name, nil, class: 'form-control'
+        = text_area_tag question.field_name, value, class: 'form-control'
       - elsif Formgen::Question.types[question.question_type] == 'time'
         = label_tag question.field_name, question.value
-        = time_field_tag question.field_name, nil, class: 'form-control'
+        = time_field_tag question.field_name, value, class: 'form-control'
 
   = submit_tag options[:submit_text].present? ? options[:submit_text] : t('.submit'), class: 'btn btn-primary'
