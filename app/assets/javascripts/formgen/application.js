@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require tabulatr
 //= require jquery_nested_form
 //= require_tree .
