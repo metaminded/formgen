@@ -5,8 +5,9 @@
     = raw flash[:notice]
 
 = form_tag formgen.answers_path(form), method: :post do
+  - reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].present? && options[:remember]
   - form.questions.each do |question|
-    - value = question.answers.find_by(user: current_user).value if options[:remember].present? && options[:remember]
+    - value = reply.answers.find_by(question: question).value if options[:remember].present? && options[:remember] && reply
 
     .form-group
       - if Formgen::Question.types[question.question_type] == 'boolean'

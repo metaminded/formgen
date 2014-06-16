@@ -57,6 +57,8 @@ de:
       formgen/answer:
         value: Antwort
       formgen/form:
+        email: Email
+        path: Pfad
         title: Titel
       formgen/question:
         language: Sprache

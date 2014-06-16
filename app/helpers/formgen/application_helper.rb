@@ -1,6 +1,7 @@
 module Formgen
   module ApplicationHelper
     include FontAwesome::Rails::IconHelper
+    include AnswersHelper
 
     def render_form path: '', options: {}
       path = request.path if path.empty?
@@ -31,12 +32,21 @@ module Formgen
       render 'formgen/forms/questions', f: form_for, options: options
     end
 
-    def render_reply_into_other_form path: '', options: {}
+    def render_reply_for form_for, obj, path: '', options: {}
+      path = request.path if path.empty?
+      form = Form.find_or_create_by path: path
+      obj.form = form
 
+      render 'formgen/answers/answers', f: form_for, form: form, options: options
     end
 
-    def save_reply_out_of_other_form path: '', params: {}
+    def save_reply_for path: ''
+      path = request.path if path.empty?
+      @form = Form.find_by path: path
 
+      errors = save_reply
+
+      NotificationMailer.notify(@reply).deliver
     end
   end
 end
