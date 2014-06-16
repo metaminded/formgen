@@ -1,0 +1,18 @@
+h2 = t('.new_notification_for', title: @reply.form.title)
+  / TODO: replace full_name with more generic method
+  small = t('.by_user', user: @reply.form.user.full_name)
+
+table
+  thead
+    tr
+      th = t('.question')
+      th = t('.answer')
+  tbody
+    - @reply.answers.each do |answer|
+      tr
+        td = answer.question.value
+        td = answer.value
+
+div
+  = t('.notification_sent')
+  =< DateTime.now

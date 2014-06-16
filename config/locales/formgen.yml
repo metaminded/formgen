@@ -105,3 +105,9 @@ de:
         string: Text
         text: Langtext
         time: Uhrzeit
+  notification_mailer:
+    notify:
+      answer: Antwort
+      by_user: "Antwort von Benutzer %{user}"
+      new_notification_for: "Neue Antwort auf Formular %{title}"
+      question: Frage
