@@ -12,11 +12,7 @@
       .col-md-12
         = f.input :email
 
-  = render 'questions', f: f
-
-  .row
-    .col-md-12
-      = f.link_to_add fa_icon('plus-square'), :questions, class: 'pull-right'
+  = render 'formgen/forms/questions', f: f
 
   .row
     .col-md-12
