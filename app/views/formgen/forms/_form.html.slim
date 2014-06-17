@@ -12,7 +12,7 @@
       .col-md-12
         = f.input :email
 
-  = f.fields_for :questions
+  = render 'questions', f: f
 
   .row
     .col-md-12
