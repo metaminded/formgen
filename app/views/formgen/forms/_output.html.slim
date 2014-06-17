@@ -1,6 +1,6 @@
 - options ||= {}
 
-- if flash[:notice]
+- if flash[:notice] && (options[:flash].nil? || options[:flash])
   .alert.alert-info
     = raw flash[:notice]
 

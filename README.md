@@ -31,7 +31,7 @@ Multiple arguments are allowed to customize the behaviour of the form.
 
 * path: If a path is set, it will be used to identify the form. Otherwise the path of the request will be used.
 * options:
-  * remember
+  * remember [false]
   * submit_text
 
 ### Helper: render_form_replies
@@ -39,13 +39,14 @@ Renders the complete input form for replies.
 
 * path: If a path is set, it will be used to identify the form. Otherwise the path of the request will be used.
 * options:
+  * flash [true]
 
 ### Helper: render_form_editor
 Renders the complete editor for forms and questions.
 
 * path: If a path is set, it will be used to identify the form. Otherwise the path of the request will be used.
 * options:
-  * fields_only
+  * fields_only [false]
 
 ### Helper: render_questions_for form_for, obj
 Renders the editor for questions only.
@@ -64,7 +65,7 @@ Use `include Formgen::ActsAsForm` for this propose.
 
 * path: If a path is set, it will be used to identify the form. Otherwise the path of the request will be used.
 * options:
-  * remember
+  * remember [false]
 
 ### Helper: save_reply_for
 Saves the reply of the render_reply_for helper in the controller.
