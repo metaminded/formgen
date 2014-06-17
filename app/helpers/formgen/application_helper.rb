@@ -38,8 +38,8 @@ module Formgen
       @form = Form.find_by path: path
 
       errors = save_reply
-
-      NotificationMailer.notify(@reply).deliver
+      NotificationMailer.send_mail(:notify, @reply)
+      errors
     end
   end
 end
