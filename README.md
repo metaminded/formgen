@@ -34,13 +34,6 @@ Multiple arguments are allowed to customize the behaviour of the form.
   * remember [false]
   * submit_text
 
-### Helper: render_form_replies
-Renders the complete input form for replies.
-
-* path: If a path is set, it will be used to identify the form. Otherwise the path of the request will be used.
-* options:
-  * flash [true]
-
 ### Helper: render_form_editor
 Renders the complete editor for forms and questions.
 

@@ -10,13 +10,6 @@ module Formgen
       render 'formgen/forms/output', form: form, options: options
     end
 
-    def render_form_replies path: '', options: {}
-      path = request.path if path.empty?
-      form = Form.find_or_create_by path: path
-
-      render 'formgen/forms/output', form: form, options: options
-    end
-
     def render_form_editor path: '', options: {}
       path = request.path if path.empty?
       @form = Form.find_or_create_by path: path
