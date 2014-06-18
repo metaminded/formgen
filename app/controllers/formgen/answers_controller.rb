@@ -7,9 +7,8 @@ module Formgen
     before_action :get_reply, only: [:show]
 
     def create
-      errors = []
-      @form = Form.find params[:id]
-      errors = save_reply
+      form = Form.find params[:id]
+      errors = save_reply(form)
       NotificationMailer.send_mail(:notify, @reply)
 
       if errors.any?

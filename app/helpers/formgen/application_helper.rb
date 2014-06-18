@@ -3,47 +3,67 @@ module Formgen
     include FontAwesome::Rails::IconHelper
     include AnswersHelper
 
-    def render_form path: raise, options: {}
-      path = request.path if path.empty?
-      form = Form.find_or_create_by path: path
+    #
+    #
+    #
+    def render_form id: nil, path: nil, options: {}
+      raise 'id_or_path_required' if id.nil? && path.nil?
+
+      if id.present?
+        form = Form.find id
+      else
+        form = Form.find_or_create_by path: path
+      end
 
       render 'formgen/forms/output', form: form, options: options
     end
 
-    def render_form_by_id form_id, options: {}
-      form = Form.find form_id
+    #
+    #
+    #
+    def render_form_editor id: nil, path: nil, options: {}
+      raise 'id_or_path_required' if id.nil? && path.nil?
 
-      render 'formgen/forms/output', form: form, options: options
+      if id.present?
+        form = Form.find id
+      else
+        form = Form.find_or_create_by path: path
+      end
+
+      render 'formgen/forms/form', form: form, options: options
     end
 
-    def render_form_editor path: raise, options: {}
-      path = request.path if path.empty?
-      @form = Form.find_or_create_by path: path
-
-      render 'formgen/forms/form', options: options
+    #
+    #
+    #
+    def render_questions_for form_for, obj, path: nil, options: {}
+      raise 'form_or_path_required' if obj.form.nil? && path.nil?
+      options[:embedded] = true
+      if obj.form.nil?
+        obj.form = Form.find_or_create_by path: path
+        obj.save
+      end
+      render 'formgen/forms/questions', f: form_for, form: obj.form, options: options
     end
 
-    def render_questions_for form_for, obj, path: raise, options: {}
-      path = request.path if path.empty?
-      form = Form.find_or_create_by path: path
-      obj.form = form
-
-      render 'formgen/forms/questions', f: form_for, options: options
+    #
+    #
+    #
+    def render_reply_for form_for, obj, path: nil, options: {}
+      raise 'form_or_path_required' if obj.form.nil? && path.nil?
+      if obj.form.nil?
+        obj.form = Form.find_or_create_by path: path
+        obj.save
+      end
+      render 'formgen/answers/answers', f: form_for, form: obj.form, options: options
     end
 
-    def render_reply_for form_for, obj, path: raise, options: {}
-      path = request.path if path.empty?
-      form = Form.find_or_create_by path: path
-      obj.form = form
-
-      render 'formgen/answers/answers', f: form_for, form: form, options: options
-    end
-
-    def save_reply_for path: raise
-      path = request.path if path.empty?
-      @form = Form.find_by path: path
-
-      errors = save_reply
+    #
+    #
+    #
+    def save_reply_for obj
+      raise 'form_required' if obj.form.nil?
+      errors = save_reply(obj.form)
       NotificationMailer.send_mail(:notify, @reply)
       errors
     end
