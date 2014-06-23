@@ -1,20 +1,6 @@
 - bsat_page_title do
   = t('.form_overview')
 
-table.table
-  thead
-    tr
-      th.col-xs-2
-      th = t('.title')
-      th = t('.path')
-  tbody
-    - @forms.each do |form|
-      tr
-        td
-          .btn-group.btn-group-xs
-            = link_to fa_icon('pencil-square-o'), edit_form_path(form), class: 'btn btn-default'
-            = link_to fa_icon('eye'), form_path(form), class: 'btn btn-default'
-        td = form.title
-        td = form.path
+= table_for Formgen::Form
 
 = link_to fa_icon('plus', text: t('.new')), new_form_path, class: 'btn btn-primary'

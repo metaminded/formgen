@@ -1,12 +1,12 @@
-require_dependency "formgen/application_controller"
+require_dependency 'formgen/application_controller'
 
 module Formgen
+  #
   class FormsController < ApplicationController
     before_action :get_form, only: [:show, :edit, :update, :destroy]
 
     def index
-      @forms = Form.all
-      render :index
+      tabulatr_for Formgen::Form
     end
 
     def show

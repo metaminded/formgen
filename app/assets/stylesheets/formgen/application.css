@@ -12,6 +12,7 @@
  *
  *= require bootstrap
  *= require font-awesome
+ *= require tabulatr
  *= require_tree .
  *= require_self
  */
