@@ -1,10 +1,11 @@
-require_dependency "formgen/application_controller"
+require_dependency 'formgen/application_controller'
 
 module Formgen
+  #
   class AnswersController < ApplicationController
     include AnswersHelper
 
-    before_action :get_reply, only: [:show]
+    before_action :find_reply, only: [:show]
 
     def create
       form = Form.find params[:id]
@@ -22,7 +23,7 @@ module Formgen
 
     private
 
-    def get_reply
+    def find_reply
       @reply = Reply.includes(answers: :question).find(params[:id])
     end
   end

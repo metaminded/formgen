@@ -24,6 +24,8 @@ en:
       show:
         reply_by: "Reply by %{user}"
     forms:
+      create:
+        create_success: Form created successfully
       edit:
         edit_form: Edit formular
       index:
@@ -40,6 +42,8 @@ en:
         questions: Questions
         question: Question
         type: Type
+      update:
+        update_success: Form updated successfully
     question:
       type:
         boolean: Yes/No
@@ -86,6 +90,8 @@ de:
       show:
         reply_by: "Antwort von %{user}"
     forms:
+      create:
+        create_success: Formular erfolgreich erstellt
       edit:
         edit_form: Formular bearbeiten
       index:
@@ -102,6 +108,8 @@ de:
         questions: Fragen
         question: Frage
         type: Typ
+      update:
+        update_success: Formular erfolgreich geändert
     question:
       type:
         boolean: Ja/Nein-Wert

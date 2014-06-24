@@ -1,6 +1,6 @@
 - options ||= {}
 
-= simple_nested_form_for form, url: formgen.form_path(form) do |f|
+= simple_nested_form_for form do |f|
   - unless options[:fields_only].present? && options[:fields_only]
     .row
       .col-md-12
