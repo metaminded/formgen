@@ -1,5 +1,8 @@
 # Formgen
 
+[![Build Status](https://travis-ci.org/simkimsia/UtilityBehaviors.png)](https://travis-ci.org/hanspolo/formgen)
+[![Dependency Status](https://gemnasium.com/renspr/bsat.svg)](https://gemnasium.com/hanspolo/formgen)
+
 ## Requirements
 
 * Rails 4.1.1 or higher
