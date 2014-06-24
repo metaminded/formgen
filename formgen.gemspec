@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'nested_form', '~> 0.3'
   s.add_dependency 'sass-rails', '~> 4.0'
   s.add_dependency 'bootstrap-sass', '~> 3.1.0'
-  s.add_dependency 'font-awesome-rails', '~> 4.1.0'
+  s.add_dependency 'font-awesome-rails', '~> 4.0.0'
   s.add_dependency 'tabulatr2', '~> 0.9'
 
   s.add_development_dependency 'sqlite3'
