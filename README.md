@@ -29,18 +29,12 @@ Formgen provides a backend to manage your forms and some helpers to integrate th
 The backend can be called by linking to the `formgen.forms_path`.
 
 ### Helper: render_form
-The basic call to render a form is `<%= render_form %>` in your views.
+The basic call to render a form in your views.
 Multiple arguments are allowed to customize the behaviour of the form.
 
+* id: The id that will be used to identify the form
+or
 * path: The path will be used to identify the form.
-* options:
-  * flash [true]: Display flash notices
-  * remember [false]: Remember input of the user
-  * submit_text: Alternative text for the submit button
-
-### Helper: render_form_by_id
-Same as `render_form` but using form_id as first parameter instead of the path.
-
 * options:
   * flash [true]: Display flash notices
   * remember [false]: Remember input of the user
@@ -49,6 +43,8 @@ Same as `render_form` but using form_id as first parameter instead of the path.
 ### Helper: render_form_editor
 Renders the complete editor for forms and questions.
 
+* id: The id that will be used to identify the form
+or
 * path: The path will be used to identify the form.
 * options:
   * fields_only [false]

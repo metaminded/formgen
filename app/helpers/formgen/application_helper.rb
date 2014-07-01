@@ -6,8 +6,8 @@ module Formgen
     #
     #
     #
-    def render_form id: nil, path: nil, options: {}
-      raise 'id_or_path_required' if id.nil? && path.nil?
+    def render_form(id: nil, path: nil, options: {})
+      fail 'id_or_path_required' if id.nil? && path.nil?
 
       if id.present?
         form = Form.find id
@@ -21,8 +21,8 @@ module Formgen
     #
     #
     #
-    def render_form_editor id: nil, path: nil, options: {}
-      raise 'id_or_path_required' if id.nil? && path.nil?
+    def render_form_editor(id: nil, path: nil, options: {})
+      fail 'id_or_path_required' if id.nil? && path.nil?
 
       if id.present?
         form = Form.find id
@@ -36,8 +36,8 @@ module Formgen
     #
     #
     #
-    def render_questions_for form_for, obj, path: nil, options: {}
-      raise 'form_or_path_required' if obj.form.nil? && path.nil?
+    def render_questions_for(form_for, obj, path: nil, options: {})
+      fail 'form_or_path_required' if obj.form.nil? && path.nil?
       options[:embedded] = true
       if obj.form.nil?
         obj.form = Form.find_or_create_by path: path
@@ -49,8 +49,8 @@ module Formgen
     #
     #
     #
-    def render_reply_for form_for, obj, path: nil, options: {}
-      raise 'form_or_path_required' if obj.form.nil? && path.nil?
+    def render_reply_for(form_for, obj, path: nil, options: {})
+      fail 'form_or_path_required' if obj.form.nil? && path.nil?
       if obj.form.nil?
         obj.form = Form.find_or_create_by path: path
         obj.save
@@ -61,8 +61,8 @@ module Formgen
     #
     #
     #
-    def save_reply_for obj
-      raise 'form_required' if obj.form.nil?
+    def save_reply_for(obj)
+      fail 'form_required' if obj.form.nil?
       errors = save_reply(obj.form)
       NotificationMailer.send_mail(:notify, @reply)
       errors
