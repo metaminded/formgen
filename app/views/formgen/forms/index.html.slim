@@ -1,6 +1,6 @@
 - bsat_page_title do
   = t('.form_overview')
 
-= table_for Formgen::Form
+= table_for Formgen::Form, paginate: true
 
 = link_to fa_icon('plus', text: t('.new')), formgen.new_form_path, class: 'btn btn-primary'
