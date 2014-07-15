@@ -35,4 +35,5 @@
         = label_tag question.field_name, question.value
         = time_field_tag question.field_name, value, class: 'form-control'
 
-  = submit_tag options[:submit_text].present? ? options[:submit_text] : t('.submit'), class: 'btn btn-primary'
+  - if form.questions.present?
+    = submit_tag options[:submit_text].present? ? options[:submit_text] : t('.submit'), class: 'btn btn-primary'
