@@ -11,10 +11,16 @@ module Formgen
       output
     end
 
-    def save_reply(form)
+    def save_reply(form, remember = false)
       errors = []
       ActiveRecord::Base.transaction do
-        @reply = Reply.create! form: form, user: current_user.present? && current_user.class.to_s == "User" ? current_user : nil
+        reply_params = { form: form, user: current_user.presence.class.name == 'User' ? current_user : nil }
+        if remember
+          @reply = Reply.find_or_create_by reply_params
+        else
+          @reply = Reply.create! reply_params
+        end
+
         form.questions.each do |question|
           missing_field_error(errors, question) if question.mandatory && params[:reply][question.id.to_s].empty?
           Answer.create! reply: @reply, question: question, value: params[:reply][question.id.to_s]

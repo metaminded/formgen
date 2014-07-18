@@ -1,13 +1,14 @@
 - options ||= {}
-- reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].present? && options[:remember]
+- reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].presence
 
 - form.questions.each do |question|
-  - value = reply.answers.find_by(question: question).value if options[:remember].present? && options[:remember] && reply
+  - value = reply.answers.find_by(question: question).value if options[:remember].presence && reply
 
   .form-group
     - if Formgen::Question.types[question.question_type] == 'boolean'
+      = hidden_field_tag question.field_name, '0'
       .checkbox
-        = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: 'boolean control-label'
+        = label_tag question.field_name, check_box_tag(question.field_name, nil, value == '1') + question.value, class: 'boolean control-label'
     - elsif Formgen::Question.types[question.question_type] == 'date'
       = label_tag question.field_name, question.value
       = date_field_tag question.field_name, value, class: 'form-control'
