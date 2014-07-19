@@ -2,4 +2,4 @@
 - bsat_page_actions do |action|
   - action.add t('.new'), formgen.new_form_path, icon: 'plus', link_to_options: { class: 'btn btn-primary' }
 
-= table_for Formgen::Form, paginate: true
+= table_for Formgen::Form, paginate: true, counter_position: :bottom
