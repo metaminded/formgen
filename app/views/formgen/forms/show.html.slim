@@ -20,7 +20,7 @@
             tr
               td = question.value
               td = fa_icon('check') if question.mandatory
-              td = t(Formgen::Question.t_types[question.question_type])
+              td = Formgen::Question.t_types[question.question_type]
 
   .col-md-6
     fieldset
