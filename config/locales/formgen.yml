@@ -102,7 +102,7 @@ de:
       new:
         new_form: Neues Formular erstellen
       output:
-        submit: Antworten absenden
+        submit: Absenden
       show:
         answers: Antworten
         mandatory: Pflichtfeld
