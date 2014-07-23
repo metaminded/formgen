@@ -4,6 +4,7 @@ en:
       formgen/answer:
         value: Answer
       formgen/form:
+        questions: Questions
         title: Title
       formgen/question:
         language: Language
@@ -70,6 +71,7 @@ de:
       formgen/form:
         email: Email
         path: Pfad
+        questions: Fragen
         title: Titel
       formgen/question:
         language: Sprache
