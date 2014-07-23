@@ -7,6 +7,9 @@ module Formgen
   mattr_accessor :always_mail_to
   @@always_mail_to = ''
 
+  mattr_accessor :subject_prefix
+  @@subject_prefix = ''
+
   def self.setup
     yield self
   end
