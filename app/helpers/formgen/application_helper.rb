@@ -38,6 +38,18 @@ module Formgen
     #
     #
     #
+    def count_questions_for(id: nil, path: nil)
+      if id.present?
+        form = Form.find id
+      else
+        form = Form.find_by path: path
+      end
+      form.present? ? form.questions.count : 0
+    end
+
+    #
+    #
+    #
     def render_questions_for(form_for, obj, path: nil, options: {})
       fail 'form_or_path_required' if obj.form.nil? && path.nil?
       options[:embedded] = true

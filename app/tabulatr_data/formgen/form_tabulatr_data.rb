@@ -11,5 +11,8 @@ module Formgen
 
     column :title
     column :path
+    column :questions do |record|
+      record.questions.count.to_s
+    end
   end
 end
