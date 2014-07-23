@@ -39,10 +39,14 @@ en:
         submit: Submit answers
       show:
         answers: Answers
+        close: Close
         mandatory: Mandatory
         preview: Preview
         questions: Questions
         question: Question
+        send_mail: Send email
+        send_mail_to_answerers: Send email to Users
+        submit: Send
         type: Type
       update:
         update_success: Form updated successfully
@@ -107,10 +111,16 @@ de:
         submit: Absenden
       show:
         answers: Antworten
+        close: Schließen
         mandatory: Pflichtfeld
+        message: Mitteilung
         preview: Vorschau
         questions: Fragen
         question: Frage
+        send_mail: Email versenden
+        send_mail_to_answerers: Email an Benutzer senden
+        subject: Betreff
+        submit: Absenden
         type: Typ
       update:
         update_success: Formular erfolgreich geändert

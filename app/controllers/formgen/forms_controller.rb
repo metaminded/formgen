@@ -3,7 +3,8 @@ require_dependency 'formgen/application_controller'
 module Formgen
   #
   class FormsController < ApplicationController
-    before_action :find_form, only: [:show, :edit, :update, :destroy]
+    before_action :find_form, only: [:edit, :update, :destroy]
+    before_action :find_form_with_answers, only: [:show, :send_mail]
 
     def index
       tabulatr_for Formgen::Form
@@ -47,10 +48,19 @@ module Formgen
       redirect_to formgen.forms_path
     end
 
+    def send_mail
+      FormMailer.send_mail(:inform_all, @form, params[:subject], params[:message])
+      redirect_to formgen.form_path(@form)
+    end
+
     private
 
     def find_form
-      @form = Form.includes(:questions, replies: :answers).find params[:id]
+      @form = Form.includes(:questions).find params[:id]
+    end
+
+    def find_form_with_answers
+      @form = Form.includes(:questions, replies: :answers, replies: :user).find params[:id]
     end
 
     def form_params

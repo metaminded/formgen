@@ -10,7 +10,7 @@ module Formgen
     def create
       form = Form.find params[:id]
       errors = save_reply(form)
-      NotificationMailer.send_mail(:notify, @reply)
+      FormMailer.send_mail(:notify, @reply)
 
       if errors.any?
         flash[:notice] = errors_to_html errors

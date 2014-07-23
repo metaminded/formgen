@@ -45,3 +45,27 @@
               td = reply.user.full_name if reply.user.present?
               - reply.answers.each do |answer|
                 td = answer.value
+
+.row
+  .col-md-4
+    button.btn.btn-primary data-toggle="modal" data-target="#mail-answerers" = t('.send_mail_to_answerers')
+
+= form_tag mail_form_path(@form) do
+  .modal.fade#mail-answerers role="dialog"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close data-dismiss="modal"
+            span aria-hidden="true" &times;
+            span.sr-only = t('.close')
+          h4.modal-title = t('.send_mail')
+        .modal-body
+          .form-group
+            = label_tag :subject, t('.subject')
+            = text_field_tag :subject, nil, class: 'form-control'
+          .form-group
+            = label_tag :message, t('.message')
+            = text_area_tag :message, nil, class: 'form-control'
+        .modal-footer
+          button.btn.btn-primary = t('.submit')
+          button.btn.btn-default data-dismiss="modal" type="button" = t('.close')
