@@ -11,8 +11,11 @@ module Formgen
 
     column :title
     column :path
-    column :questions do |record|
+    column :questions, table_column_options: { sortable: false, filter: false } do |record|
       record.questions.count.to_s
+    end
+    column :answers, table_column_options: { sortable: false, filter: false } do |record|
+      record.replies.count.to_s
     end
   end
 end
