@@ -6,13 +6,15 @@ module Formgen
     #
     #
     #
-    def render_form(id: nil, path: nil, options: {})
+    def render_form(id: nil, path: nil, title: nil, options: {})
       fail 'id_or_path_required' if id.nil? && path.nil?
 
       if id.present?
         form = Form.find id
       else
-        form = Form.find_or_create_by path: path
+        form = Form.find_or_create_by path: path do |f|
+          f.title = title if title.present?
+        end
       end
 
       render 'formgen/forms/output', form: form, options: options
