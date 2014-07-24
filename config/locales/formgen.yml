@@ -135,7 +135,7 @@ de:
         text: Langtext
         time: Uhrzeit
 
-  notification_mailer:
+  form_mailer:
     notify:
       answer: Antwort
       by_user: "Antwort von Benutzer %{user}"
