@@ -1,7 +1,7 @@
 module Formgen
   module AnswersHelper
     def missing_field_error errors, question
-      errors << t('.field_mandatory', question.value)
+      errors << t('.field_mandatory', question: question.value)
     end
 
     def errors_to_html errors

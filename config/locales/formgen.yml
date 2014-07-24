@@ -94,6 +94,7 @@ de:
   formgen:
     answers:
       create:
+        field_mandatory: "Bitte beantworte das Pflichtfeld %{question}"
         saved_reply_successfully: Antwort wurde erfolgreich gespeichert
       show:
         reply_by: "Antwort von %{user}"

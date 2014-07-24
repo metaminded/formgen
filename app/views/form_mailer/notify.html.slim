@@ -1,4 +1,4 @@
-h2 = t('.new_notification_for', title: @reply.form.title.presence || @reply.form.path)
+h2 = t('form_mailer.notify.new_notification_for', title: @reply.form.title.presence || @reply.form.path)
   / TODO: replace full_name with more generic method
   small = t('.by_user', user: @reply.form.user.full_name)
 
