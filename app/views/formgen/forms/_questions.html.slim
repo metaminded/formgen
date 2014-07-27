@@ -1,7 +1,7 @@
 = f.input :form_id, as: :hidden if options[:embedded]
 
 = f.fields_for :questions do |question_form|
-  .row
+  .row.form-group
     .col-md-5
       = question_form.input :value
     .col-md-2.col-xs-5
@@ -11,8 +11,8 @@
     .col-md-1.col-xs-1
       = question_form.input :mandatory
     .col-md-1.col-xs-1
-      = question_form.link_to_remove fa_icon('minus-square'), class: 'pull-right'
+      = question_form.link_to_remove fa_icon('minus'), class: 'pull-right btn btn-sm btn-default'
 
-.row
+.row.form-group
   .col-md-12
-    = f.link_to_add fa_icon('plus-square'), :questions, class: 'pull-right'
+    = f.link_to_add fa_icon('plus'), :questions, class: 'pull-right btn btn-sm btn-default'
