@@ -1,6 +1,6 @@
 module Formgen
   class Question < ActiveRecord::Base
-    TYPES = %w{boolean date datetime float integer string text time}
+    TYPES = %w{boolean date datetime email float integer string text time}
 
     belongs_to :form, inverse_of: :questions
     has_many :answers
@@ -10,10 +10,6 @@ module Formgen
 
     def self.t_types
       TYPES.map { |type| I18n.translate("formgen.question.type.#{type}") }
-    end
-
-    def self.types
-      TYPES
     end
 
     def self.index_of_type type

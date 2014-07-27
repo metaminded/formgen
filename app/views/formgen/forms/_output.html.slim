@@ -11,28 +11,31 @@
     - classes = question.mandatory ? 'mandatory' : ''
 
     .form-group
-      - if Formgen::Question.types[question.question_type] == 'boolean'
+      - if Formgen::Question::TYPES[question.question_type] == 'boolean'
         .checkbox
           = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: "boolean control-label #{classes}"
-      - elsif Formgen::Question.types[question.question_type] == 'date'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'date'
         = label_tag question.field_name, question.value, class: classes
         = date_field_tag question.field_name, value, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'datetime'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'datetime'
         = label_tag question.field_name, question.value, class: classes
         = datetime_field_tag question.field_name, value, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'float'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'email'
+        = label_tag question.field_name, question.value, class: classes
+        = email_field_tag question.field_name, value, class: 'form-control'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'float'
         = label_tag question.field_name, question.value, class: classes
         = number_field_tag question.field_name, value, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'integer'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'integer'
         = label_tag question.field_name, question.value, class: classes
         = number_field_tag question.field_name, value, step: 1.0, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'string'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'string'
         = label_tag question.field_name, question.value, class: classes
         = text_field_tag question.field_name, value, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'text'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'text'
         = label_tag question.field_name, question.value, class: classes
         = text_area_tag question.field_name, value, class: 'form-control'
-      - elsif Formgen::Question.types[question.question_type] == 'time'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'time'
         = label_tag question.field_name, question.value, class: classes
         = time_field_tag question.field_name, value, class: 'form-control'
 

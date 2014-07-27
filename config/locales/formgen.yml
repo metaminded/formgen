@@ -95,6 +95,7 @@ de:
     answers:
       create:
         field_mandatory: "Bitte beantworte das Pflichtfeld %{question}"
+        field_not_valid: "Das Feld %{question} wurde nicht korrekt beantwortet"
         saved_reply_successfully: Antwort wurde erfolgreich gespeichert
       show:
         reply_by: "Antwort von %{user}"
@@ -113,6 +114,7 @@ de:
       show:
         answers: Antworten
         close: Schließen
+        email: Email
         mandatory: Pflichtfeld
         message: Mitteilung
         preview: Vorschau
@@ -130,6 +132,7 @@ de:
         boolean: Ja/Nein-Wert
         date: Datum
         datetime: Datum mit Uhrzeit
+        email: Email
         float: Zahl mit Nachkommastellen
         integer: Ganzzahl
         string: Text
