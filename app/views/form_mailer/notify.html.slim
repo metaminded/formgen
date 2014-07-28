@@ -9,6 +9,7 @@ table
       th = t('.answer')
   tbody
     - @reply.answers.each do |answer|
+      - next if Formgen::Question::TYPES[answer.question.question_type] == 'description'
       tr
         td = answer.question.value
         td = answer.value

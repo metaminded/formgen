@@ -20,6 +20,9 @@
       - elsif Formgen::Question::TYPES[question.question_type] == 'datetime'
         = label_tag question.field_name, question.value, class: classes
         = datetime_field_tag question.field_name, value, class: 'form-control'
+      - elsif Formgen::Question::TYPES[question.question_type] == 'description'
+        = content_tag :div, class: 'formgen-description' do
+          - question.value
       - elsif Formgen::Question::TYPES[question.question_type] == 'email'
         = label_tag question.field_name, question.value, class: classes
         = email_field_tag question.field_name, value, class: 'form-control'

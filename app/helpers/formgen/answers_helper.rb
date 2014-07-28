@@ -16,19 +16,17 @@ module Formgen
     end
 
     def valid?(question, value)
-      puts "="*30
-      puts question.question_type
-      puts "="*30
-      case question.question_type
-      when 0 then true
-      when 1 then true
-      when 2 then true
-      when 3 then !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
-      when 4 then true
-      when 5 then true
-      when 6 then true
-      when 7 then true
-      when 8 then true
+      case Question::TYPES[question.question_type]
+      when 'boolean' then true
+      when 'date' then true
+      when 'datetime' then true
+      when 'description' then true
+      when 'email' then !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
+      when 'float' then true
+      when 'integer' then true
+      when 'string' then true
+      when 'text' then true
+      when 'time' then true
       else false
       end
     end

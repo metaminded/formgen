@@ -55,6 +55,7 @@ en:
         boolean: Yes/No
         date: Date
         datetime: Date with time
+        description: Description (no answers allowed)
         float: Floatingnumber
         integer: Number
         string: Text
@@ -132,13 +133,13 @@ de:
         boolean: Ja/Nein-Wert
         date: Datum
         datetime: Datum mit Uhrzeit
+        description: Beschreibung (keine Antworten erlaubt)
         email: Email
         float: Zahl mit Nachkommastellen
         integer: Ganzzahl
         string: Text
         text: Langtext
         time: Uhrzeit
-
   form_mailer:
     notify:
       answer: Antwort
