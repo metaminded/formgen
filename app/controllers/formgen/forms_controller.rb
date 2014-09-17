@@ -3,6 +3,8 @@ require_dependency 'formgen/application_controller'
 module Formgen
   #
   class FormsController < ApplicationController
+    include QuestionsHelper
+
     before_action :find_form, only: [:edit, :update, :destroy]
     before_action :find_form_with_answers, only: [:show, :send_mail]
 

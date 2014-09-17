@@ -3,7 +3,7 @@ require_dependency 'formgen/application_controller'
 module Formgen
   #
   class AnswersController < ApplicationController
-    include AnswersHelper
+    include QuestionsHelper
 
     before_action :find_reply, only: [:show]
 

@@ -1,7 +1,7 @@
 module Formgen
   module ApplicationHelper
     #include FontAwesome::Rails::IconHelper
-    include AnswersHelper
+    include QuestionsHelper
 
     #
     #

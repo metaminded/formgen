@@ -1,5 +1,14 @@
 module Formgen
-  module AnswersHelper
+  module QuestionsHelper
+    def get_additional_question_type(question)
+      qt = Formgen::additional_question_types.select { |i, t| t[:id] == question.question_type }
+      qt.present? ? qt.first.last : {}
+    end
+
+    def render_question(question, value, classes)
+      get_additional_question_type(question)[:question_callback].try(:yield, question, value, classes)
+    end
+
     def missing_field_error errors, question
       errors << t('.field_mandatory', question: question.value)
     end
@@ -27,7 +36,7 @@ module Formgen
       when 'string' then true
       when 'text' then true
       when 'time' then true
-      else false
+      else get_additional_question_type(question)[:validation_callback].yield(value)
       end
     end
 
@@ -49,6 +58,15 @@ module Formgen
         raise ActiveRecord::Rollback unless errors.empty?
       end
       errors
+    end
+
+    def render_value(answer)
+      qt = get_additional_question_type(answer.question)
+      if qt[:display_callback].present?
+        qt[:display_callback].yield(answer.value)
+      else
+        answer.value
+      end
     end
   end
 end

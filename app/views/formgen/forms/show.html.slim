@@ -20,7 +20,7 @@
             tr
               td = question.value
               td = fa_icon('check') if question.mandatory
-              td = Formgen::Question.t_types[question.question_type]
+              td = Formgen::Question.t_types[question.question_type].presence || get_additional_question_type(question)[:title]
 
   .col-md-6
     fieldset
@@ -44,7 +44,7 @@
               // TODO: replace full_name with something more generic
               td = reply.user.full_name if reply.user.present?
               - reply.answers.each do |answer|
-                td = answer.value
+                td = render_value(answer)
 
 .row
   .col-md-4

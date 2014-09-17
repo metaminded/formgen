@@ -41,3 +41,5 @@
       = time_field_tag question.field_name, value, class: 'form-control'
       span.input-group-addon
         = fa_icon('clock-o')
+  - else
+    = raw render_question question, value, class: classes
