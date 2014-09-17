@@ -73,6 +73,40 @@ Saves the reply of the render_reply_for helper in the controller.
 
 * path: The path will be used to identify the form.
 
+## Setup
+You can add the following to `config/initialiyers/formgen.rb`.
+```ruby
+Formgen.setup do |config|
+  # My config goes here
+  ...
+end
+```
+
+### Send an email to an default receiver
+```ruby
+config.always_mail_to = 'my-email@example.com'
+```
+Every form will now send an email to my-email@example.com, even if another address is set in the form.
+Then it will send it to both addresses.
+
+### Set an prefix to your emails subject
+If you want to set a prefix, so that you can see, from which page the email was sent, you can add the following line.
+```ruby
+config.subject_prefix = '[MyWebpage]'
+```
+
+### Build your own question types
+```ruby
+config.add_question_type 1001, 'My Type',
+  question_callback: ->(question, value, classes) { ... },
+  display_callback: ->(value) { "My Result" },
+  validation_callback: ->(value) { return !value }
+```
+1001 is the id. It should be unique and greater than 1000.
+My Type is the title that will be displayed.
+The question_callback and the validation_callback are required.
+The display_callback is optional. If it isn't present, the plain value will be rendered.
+
 ## License
 
 This project rocks and uses MIT-LICENSE.
