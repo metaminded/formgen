@@ -6,7 +6,7 @@ module Formgen
     include QuestionsHelper
 
     before_action :find_form, only: [:edit, :update, :destroy]
-    before_action :find_form_with_answers, only: [:show, :send_mail]
+    before_action :find_form_with_answers, only: [:show, :send_mail, :export]
 
     def index
       tabulatr_for Formgen::Form
@@ -53,6 +53,10 @@ module Formgen
     def send_mail
       FormMailer.send_mail(:inform_all, @form, params[:subject], params[:message])
       redirect_to formgen.form_path(@form)
+    end
+
+    def export
+      render text: @form.to_csv, content_type: 'text/csv'
     end
 
     private

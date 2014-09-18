@@ -40,6 +40,8 @@ en:
       show:
         answers: Answers
         close: Close
+        email: Email
+        export: Export as CSV
         mandatory: Mandatory
         preview: Preview
         questions: Questions
@@ -116,6 +118,7 @@ de:
         answers: Antworten
         close: Schließen
         email: Email
+        export: Als CSV exportieren
         mandatory: Pflichtfeld
         message: Mitteilung
         preview: Vorschau
