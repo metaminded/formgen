@@ -20,6 +20,9 @@ en:
       formgen/reply: Reply
 
   formgen:
+    action:
+      are_you_sure: Are you sure?
+      delete: Delete
     answers:
       create:
         saved_reply_successfully: Your reply was successfully saved
@@ -95,6 +98,9 @@ de:
       formgen/reply: Rücksendung
 
   formgen:
+    action:
+      are_you_sure: Sind Sie sicher?
+      delete: Löschen
     answers:
       create:
         field_mandatory: "Bitte beantworte das Pflichtfeld %{question}"
