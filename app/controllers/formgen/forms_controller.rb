@@ -5,6 +5,7 @@ module Formgen
   class FormsController < ApplicationController
     include QuestionsHelper
 
+    before_action :auth_user! unless Formgen.skip_authentication
     before_action :find_form, only: [:edit, :update, :destroy]
     before_action :find_form_with_answers, only: [:show, :send_mail, :export]
 

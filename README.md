@@ -107,6 +107,12 @@ My Type is the title that will be displayed.
 The question_callback and the validation_callback are required.
 The display_callback is optional. If it isn't present, the plain value will be rendered.
 
+### Don't use devise authentication
+If you don't use devise or if the backend controllers should not authenticate the user, you can skip the authentication.
+```ruby
+config.skip_authentication = true
+```
+
 ## License
 
 This project rocks and uses MIT-LICENSE.

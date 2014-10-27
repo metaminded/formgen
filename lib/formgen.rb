@@ -13,6 +13,9 @@ module Formgen
   mattr_accessor :additional_question_types
   @@additional_question_types = {}
 
+  mattr_accessor :skip_authentication
+  @@skip_authentication = false
+
   def self.setup
     yield self
   end
