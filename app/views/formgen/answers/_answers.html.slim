@@ -1,7 +1,6 @@
 - options ||= {}
+- reply = nil
 - reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].presence
 
 - form.questions.each do |question|
-  - value = reply.answers.find_by(question: question).value if options[:remember].presence && reply
-
-  = render 'formgen/questions/question', question: question, options: options
+  = render 'formgen/questions/question', question: question, options: options, reply: reply
