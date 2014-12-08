@@ -2,7 +2,7 @@ module Formgen
   class Question < ActiveRecord::Base
     TYPES = %w{boolean date datetime description email float integer string text time}
 
-    belongs_to :form, inverse_of: :questions
+    belongs_to :form, inverse_of: :questions, touch: true
     has_many :answers
 
     validates :value, presence: true
