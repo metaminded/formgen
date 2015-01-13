@@ -67,7 +67,7 @@ module Formgen
     end
 
     def find_form_with_answers
-      @form = Form.includes(:questions, replies: :answers, replies: :user).find params[:id]
+      @form = Form.includes(:questions, replies: [:answers, :user]).find params[:id]
     end
 
     def form_params
