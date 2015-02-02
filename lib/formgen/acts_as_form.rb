@@ -9,7 +9,7 @@ module Formgen
         accepts_nested_attributes_for :questions, allow_destroy: true
 
         define_method :questions do
-          self.form.questions
+          self.form.try(:questions)
         end
 
         define_singleton_method :question_params do
