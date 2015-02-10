@@ -51,7 +51,7 @@ module Formgen
         end
 
         form.questions.each do |question|
-          missing_field_error(errors, question) if question.mandatory && params[:reply][question.id.to_s].empty?
+          missing_field_error(errors, question) if question.mandatory && !params[:reply][question.id.to_s].present?
           validate_field_error(errors, question) if !valid?(question, params[:reply][question.id.to_s]) && params[:reply][question.id.to_s].present?
           Answer.create! reply: @reply, question: question, value: params[:reply][question.id.to_s]
         end
