@@ -10,6 +10,7 @@ en:
       formgen/question:
         language: Language
         mandatory: Mandatory
+        position: Position
         question_type: Type
         value: Question
       formgen/reply:
@@ -90,6 +91,7 @@ de:
       formgen/question:
         language: Sprache
         mandatory: Verpflichtend
+        position: Position
         question_type: Typ
         value: Frage
       formgen/reply:

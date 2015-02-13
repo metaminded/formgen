@@ -8,6 +8,8 @@ module Formgen
     validates :value, presence: true
     validates :question_type, presence: true
 
+    default_scope -> { order(:position) }
+
     def self.t_types
       TYPES.map { |type| I18n.translate("formgen.question.type.#{type}") }
     end

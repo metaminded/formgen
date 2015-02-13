@@ -73,7 +73,7 @@ module Formgen
     def form_params
       params.require(:form).permit :title, :path, :email, context_tag_ids: [],
                                     questions_attributes:
-                                      [:id, :value, :language, :mandatory,
+                                      [:id, :position, :value, :language, :mandatory,
                                        :question_type, :_destroy]
     end
   end
