@@ -1,4 +1,5 @@
-- existing_answer = reply.answers.find_by(question: question) if reply.present?
+- reply ||= nil
+- existing_answer = reply.answers.find_by(question: question) if reply
 - value = existing_answer.value if options[:remember] && reply && existing_answer
 - classes = question.mandatory ? 'mandatory' : ''
 
