@@ -33,6 +33,7 @@ module Formgen
       when 'email' then !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
       when 'float' then true
       when 'integer' then true
+      when 'salutation' then I18n.t('formgen.salutations').keys.include?(value.to_sym)
       when 'string' then true
       when 'text' then true
       when 'time' then true
@@ -65,7 +66,10 @@ module Formgen
       if qt[:display_callback].present?
         qt[:display_callback].yield(answer.value)
       else
-        answer.value
+        case Question::TYPES[answer.question.question_type]
+          when 'salutation' then I18n.t("formgen.salutations.#{answer.value.to_s}")
+          else answer.value
+        end
       end
     end
   end

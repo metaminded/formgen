@@ -3,6 +3,6 @@ module Formgen
     belongs_to :reply
     belongs_to :question, touch: true
 
-    validate :question_id, presence: true
+    validates :question, presence: true
   end
 end

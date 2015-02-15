@@ -56,6 +56,11 @@ en:
         type: Type
       update:
         update_success: Form updated successfully
+    salutations:
+      mr: Mister
+      mrs: Misses
+      dr: Doctor
+      prof: Professor
     question:
       type:
         boolean: Yes/No
@@ -64,6 +69,7 @@ en:
         description: Description (no answers allowed)
         float: Floatingnumber
         integer: Number
+        salutation: Salutation
         string: Text
         text: Longtext
         time: Time
@@ -139,6 +145,11 @@ de:
         type: Typ
       update:
         update_success: Formular erfolgreich geändert
+    salutations:
+      mr: Herr
+      mrs: Frau
+      dr: Doktor
+      prof: Professor
     question:
       type:
         boolean: Ja/Nein-Wert
@@ -148,6 +159,7 @@ de:
         email: Email
         float: Zahl mit Nachkommastellen
         integer: Ganzzahl
+        salutation: Anrede
         string: Text
         text: Langtext
         time: Uhrzeit

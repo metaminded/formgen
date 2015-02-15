@@ -2,46 +2,51 @@
 - existing_answer = reply.answers.find_by(question: question) if reply
 - value = existing_answer.value if options[:remember] && reply && existing_answer
 - classes = question.mandatory ? 'mandatory' : ''
+- type = Formgen::Question::TYPES[question.question_type]
 
 .form-group
-  - if Formgen::Question::TYPES[question.question_type] == 'boolean'
-    .checkbox
-      = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: "boolean control-label #{classes}"
-  - elsif Formgen::Question::TYPES[question.question_type] == 'date'
-    = label_tag question.field_name, question.value, class: classes
-    .input-group.date
+  - case type
+    - when 'boolean'
+      .checkbox
+        = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: "boolean control-label #{classes}"
+    - when 'date'
+      = label_tag question.field_name, question.value, class: classes
+      .input-group.date
+        = text_field_tag question.field_name, value, class: 'form-control'
+        span.input-group-addon
+          = fa_icon('calendar')
+    - when 'datetime'
+      = label_tag question.field_name, question.value, class: classes
+      .input-group.datetime
+        = text_field_tag question.field_name, value, class: 'form-control'
+        span.input-group-addon
+          = fa_icon('calendar')
+    - when 'description'
+      = content_tag :div, class: 'formgen-description' do
+        - question.value
+    - when 'email'
+      = label_tag question.field_name, question.value, class: classes
+      = email_field_tag question.field_name, value, class: 'form-control'
+    - when 'float'
+      = label_tag question.field_name, question.value, class: classes
+      = number_field_tag question.field_name, value, class: 'form-control'
+    - when 'integer'
+      = label_tag question.field_name, question.value, class: classes
+      = number_field_tag question.field_name, value, step: 1.0, class: 'form-control'
+    - when 'salutation'
+      = label_tag question.field_name, question.value, class: classes
+      = select_tag question.field_name, options_for_select(t('formgen.salutations').each_with_object({}) { |(k,v), h| h[v] = k }, value), class: 'form-control'
+    - when 'string'
+      = label_tag question.field_name, question.value, class: classes
       = text_field_tag question.field_name, value, class: 'form-control'
-      span.input-group-addon
-        = fa_icon('calendar')
-  - elsif Formgen::Question::TYPES[question.question_type] == 'datetime'
-    = label_tag question.field_name, question.value, class: classes
-    .input-group.datetime
-      = text_field_tag question.field_name, value, class: 'form-control'
-      span.input-group-addon
-        = fa_icon('calendar')
-  - elsif Formgen::Question::TYPES[question.question_type] == 'description'
-    = content_tag :div, class: 'formgen-description' do
-      - question.value
-  - elsif Formgen::Question::TYPES[question.question_type] == 'email'
-    = label_tag question.field_name, question.value, class: classes
-    = email_field_tag question.field_name, value, class: 'form-control'
-  - elsif Formgen::Question::TYPES[question.question_type] == 'float'
-    = label_tag question.field_name, question.value, class: classes
-    = number_field_tag question.field_name, value, class: 'form-control'
-  - elsif Formgen::Question::TYPES[question.question_type] == 'integer'
-    = label_tag question.field_name, question.value, class: classes
-    = number_field_tag question.field_name, value, step: 1.0, class: 'form-control'
-  - elsif Formgen::Question::TYPES[question.question_type] == 'string'
-    = label_tag question.field_name, question.value, class: classes
-    = text_field_tag question.field_name, value, class: 'form-control'
-  - elsif Formgen::Question::TYPES[question.question_type] == 'text'
-    = label_tag question.field_name, question.value, class: classes
-    = text_area_tag question.field_name, value, class: 'form-control'
-  - elsif Formgen::Question::TYPES[question.question_type] == 'time'
-    = label_tag question.field_name, question.value, class: classes
-    .input-group.time
-      = time_field_tag question.field_name, value, class: 'form-control'
-      span.input-group-addon
-        = fa_icon('clock-o')
-  - else
-    = raw render_question question, value, class: classes
+    - when 'text'
+      = label_tag question.field_name, question.value, class: classes
+      = text_area_tag question.field_name, value, class: 'form-control'
+    - when 'time'
+      = label_tag question.field_name, question.value, class: classes
+      .input-group.time
+        = time_field_tag question.field_name, value, class: 'form-control'
+        span.input-group-addon
+          = fa_icon('clock-o')
+    - else
+      = raw render_question question, value, class: classes
