@@ -1,3 +1,5 @@
+require 'csv'
+
 module Formgen
   class Form < ActiveRecord::Base
     has_many :questions, inverse_of: :form, dependent: :destroy
@@ -6,7 +8,7 @@ module Formgen
     has_many :replies, dependent: :destroy
 
     def to_csv
-      CSV.generate do |csv|
+      CSV.generate(force_quotes: true) do |csv|
         csv << self.questions.map(&:value)
         self.replies.each do |reply|
           csv << reply.answers.map(&:value)

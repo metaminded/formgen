@@ -26,17 +26,17 @@ module Formgen
 
     def valid?(question, value)
       case Question::TYPES[question.question_type]
-      when 'boolean' then true
-      when 'date' then true
-      when 'datetime' then true
-      when 'description' then true
-      when 'email' then !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
-      when 'float' then true
-      when 'integer' then true
-      when 'salutation' then I18n.t('formgen.salutations').keys.include?(value.to_sym)
-      when 'string' then true
-      when 'text' then true
-      when 'time' then true
+      when 'boolean' then     value == true || value == false
+      when 'date' then        (DateTime.parse(value) rescue nil)
+      when 'datetime' then    (DateTime.parse(value) rescue nil)
+      when 'description' then !value
+      when 'email' then       !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
+      when 'float' then       value == 0 || value.to_f != 0.0
+      when 'integer' then     value == 0 || value.to_i != 0
+      when 'salutation' then  I18n.t('formgen.salutations').keys.include?(value.to_sym)
+      when 'string' then      true
+      when 'text' then        true
+      when 'time' then        (DateTime.parse(value) rescue nil)
       else get_additional_question_type(question)[:validation_callback].yield(value)
       end
     end

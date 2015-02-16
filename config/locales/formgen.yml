@@ -67,6 +67,7 @@ en:
         date: Date
         datetime: Date with time
         description: Description (no answers allowed)
+        email: Email
         float: Floatingnumber
         integer: Number
         salutation: Salutation
