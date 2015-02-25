@@ -12,13 +12,13 @@
     - when 'date'
       = label_tag question.field_name, question.value, class: classes
       .input-group.date
-        = text_field_tag question.field_name, value, class: 'form-control'
+        = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
           = fa_icon('calendar')
     - when 'datetime'
       = label_tag question.field_name, question.value, class: classes
       .input-group.datetime
-        = text_field_tag question.field_name, value, class: 'form-control'
+        = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
           = fa_icon('calendar')
     - when 'description'
@@ -26,26 +26,26 @@
         - question.value
     - when 'email'
       = label_tag question.field_name, question.value, class: classes
-      = email_field_tag question.field_name, value, class: 'form-control'
+      = email_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'float'
       = label_tag question.field_name, question.value, class: classes
-      = number_field_tag question.field_name, value, class: 'form-control'
+      = number_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'integer'
       = label_tag question.field_name, question.value, class: classes
-      = number_field_tag question.field_name, value, step: 1.0, class: 'form-control'
+      = number_field_tag question.field_name, value, step: 1.0, class: 'form-control', disabled: options[:disabled]
     - when 'salutation'
       = label_tag question.field_name, question.value, class: classes
-      = select_tag question.field_name, options_for_select(t('formgen.salutations').each_with_object({}) { |(k,v), h| h[v] = k }, value), class: 'form-control'
+      = select_tag question.field_name, options_for_select(t('formgen.salutations').each_with_object({}) { |(k,v), h| h[v] = k }, value), class: 'form-control', disabled: options[:disabled]
     - when 'string'
       = label_tag question.field_name, question.value, class: classes
-      = text_field_tag question.field_name, value, class: 'form-control'
+      = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'text'
       = label_tag question.field_name, question.value, class: classes
-      = text_area_tag question.field_name, value, class: 'form-control'
+      = text_area_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'time'
       = label_tag question.field_name, question.value, class: classes
       .input-group.time
-        = time_field_tag question.field_name, value, class: 'form-control'
+        = time_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
           = fa_icon('clock-o')
     - else

@@ -13,7 +13,7 @@ module Formgen
         end
 
         define_singleton_method :question_params do
-          [:form_id, { questions_attributes: [:id, :value, :language, :mandatory, :question_type, :_destroy] }].flatten
+          [:form_id, { questions_attributes: [:id, :value, :language, :mandatory, :question_type, :position, :_destroy] }].flatten
         end
       end
     end
