@@ -13,3 +13,5 @@ table
       tr
         td = answer.question.value
         td = answer.value
+
+= t('.created_at', date: l(Time.zone.now))

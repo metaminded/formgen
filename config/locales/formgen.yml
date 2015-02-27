@@ -79,6 +79,7 @@ en:
     notify:
       answer: Answer
       by_user: "Answer of user %{user}"
+      created_at: "Created at %{date}"
       new_notification_for: "New answer to formular %{title}"
       question: Question
 
@@ -168,5 +169,6 @@ de:
     notify:
       answer: Antwort
       by_user: "Antwort von Benutzer %{user}"
+      created_at: "Erstellt am %{date}"
       new_notification_for: "Neue Antwort auf Formular %{title}"
       question: Frage
