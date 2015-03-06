@@ -3,5 +3,7 @@ module Formgen
     belongs_to :form
     belongs_to :user
     has_many :answers
+
+    validates :form, presence: true
   end
 end
