@@ -46,7 +46,7 @@ module Formgen
       ActiveRecord::Base.transaction do
         reply_params = { form: form, user: current_user.presence.class.name == 'User' ? current_user : nil }
         if remember
-          @reply = Reply.find_or_create_by reply_params
+          @reply = Reply.find_or_create_by! reply_params
         else
           @reply = Reply.create! reply_params
         end
@@ -54,7 +54,9 @@ module Formgen
         form.questions.each do |question|
           missing_field_error(errors, question) if question.mandatory && !params[:reply][question.id.to_s].present?
           validate_field_error(errors, question) if !valid?(question, params[:reply][question.id.to_s]) && params[:reply][question.id.to_s].present?
-          Answer.create! reply: @reply, question: question, value: params[:reply][question.id.to_s]
+          a = Answer.find_or_initialize_by reply: @reply, question: question
+          a.value = params[:reply][question.id.to_s]
+          a.save!
         end
         raise ActiveRecord::Rollback unless errors.empty?
       end

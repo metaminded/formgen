@@ -77,7 +77,7 @@ module Formgen
     #
     def save_reply_for(obj, options: {})
       fail 'form_required' if obj.form.nil?
-      errors = save_reply(obj.form, options[:remember].presence)
+      errors = save_reply(obj.form, options[:remember])
       FormMailer.send_mail(:notify, @reply) if errors.empty?
       errors
     end
