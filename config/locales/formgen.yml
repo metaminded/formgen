@@ -59,8 +59,6 @@ en:
     salutations:
       mr: Mister
       mrs: Misses
-      dr: Doctor
-      prof: Professor
     question:
       type:
         boolean: Yes/No
@@ -150,8 +148,6 @@ de:
     salutations:
       mr: Herr
       mrs: Frau
-      dr: Doktor
-      prof: Professor
     question:
       type:
         boolean: Ja/Nein-Wert
