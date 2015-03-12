@@ -41,8 +41,6 @@ module Formgen
       q.question_type = 10                              # Salutation
       assert(valid?(q, 'mr'))
       assert(valid?(q, 'mrs'))
-      assert(valid?(q, 'dr'))
-      assert(valid?(q, 'prof'))
       assert_not(valid?(q, 'Mister'))
       assert_not(valid?(q, 'Catwoman'))
     end
