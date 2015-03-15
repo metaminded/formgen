@@ -5,7 +5,7 @@ module Formgen
   class AnswersController < ApplicationController
     include QuestionsHelper
 
-    before_action :auth_user! unless Formgen.skip_authentication
+    before_action :auth_user! unless Formgen.skip_answer_authentication
     before_action :find_reply, only: [:show]
 
     def create

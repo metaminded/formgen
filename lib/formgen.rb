@@ -16,6 +16,9 @@ module Formgen
   mattr_accessor :skip_authentication
   @@skip_authentication = false
 
+  mattr_accessor :skip_answer_authentication
+  @@skip_answer_authentication = true
+
   def self.setup
     yield self
   end
