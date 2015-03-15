@@ -95,6 +95,21 @@ If you want to set a prefix, so that you can see, from which page the email was 
 config.subject_prefix = '[MyWebpage]'
 ```
 
+### Use authentication flags
+In most projects you want to have the backend forms to check if the user is signed in.
+This is the default behavior.
+If you want to skip the authentication you can set the following flag.
+```ruby
+config.skip_authentication = true
+```
+
+To create an answer, you may not to authenticate every user.
+The default behavior for answers is that the authentication is skipped.
+To change this you can set the following flag.
+```ruby
+config.skip_answer_authentication = false
+```
+
 ### Build your own question types
 ```ruby
 config.add_question_type 1001, 'My Type',
