@@ -4,8 +4,8 @@ module Formgen
   class QuestionsHelperTest < ActionView::TestCase
     test "validation of answers" do
       q = Question.new(question_type: 0, value: 'foo')  # Boolean
-      assert(valid?(q, false))
-      assert(valid?(q, true))
+      assert(valid?(q, 'false'))
+      assert(valid?(q, 'true'))
       assert_not(valid?(q, 'Yes sir'))
 
       q.question_type = 1                               # Date
