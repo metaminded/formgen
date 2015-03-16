@@ -26,7 +26,7 @@ module Formgen
 
     def valid?(question, value)
       case Question::TYPES[question.question_type]
-      when 'boolean' then     value == true || value == false
+      when 'boolean' then     value == 'true' || value == 'false'
       when 'date' then        (DateTime.parse(value) rescue nil)
       when 'datetime' then    (DateTime.parse(value) rescue nil)
       when 'description' then !value
@@ -70,6 +70,7 @@ module Formgen
       else
         case Question::TYPES[answer.question.question_type]
           when 'salutation' then I18n.t("formgen.salutations.#{answer.value.to_s}")
+          when 'boolean' then I18n.t("formgen.booleans.#{answer.value.to_s}") if answer.value.present?
           else answer.value
         end
       end

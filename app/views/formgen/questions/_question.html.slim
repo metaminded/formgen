@@ -1,6 +1,8 @@
 - reply ||= nil
 - existing_answer = reply.answers.find_by(question: question) if reply
 - value = existing_answer.value if options[:remember] && reply && existing_answer
+- value ||= session[:formgen_reply].try(:[], question.id.to_s)
+- session[:formgen_reply].try(:[]=, question.id.to_s, nil)
 - classes = question.mandatory ? 'mandatory' : ''
 - type = Formgen::Question::TYPES[question.question_type]
 
@@ -8,7 +10,9 @@
   - case type
     - when 'boolean'
       .checkbox
-        = label_tag question.field_name, check_box_tag(question.field_name) + question.value, class: "boolean control-label #{classes}"
+        / No hidden field, if question has to be checked.
+        = hidden_field_tag question.field_name, 'false' unless question.mandatory
+        = label_tag question.field_name, check_box_tag(question.field_name, 'true', value == 'true') + question.value, class: "boolean control-label #{classes}"
     - when 'date'
       = label_tag question.field_name, question.value, class: classes
       .input-group.date

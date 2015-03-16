@@ -30,6 +30,9 @@ en:
         saved_reply_successfully: Your reply was successfully saved
       show:
         reply_by: "Reply by %{user}"
+    booleans:
+      "false": No
+      "true": Yes
     forms:
       create:
         create_success: Form created successfully
@@ -119,6 +122,9 @@ de:
         saved_reply_successfully: Antwort wurde erfolgreich gespeichert
       show:
         reply_by: "Antwort von %{user}"
+    booleans:
+      "false": Nein
+      "true": Ja
     forms:
       create:
         create_success: Formular erfolgreich erstellt

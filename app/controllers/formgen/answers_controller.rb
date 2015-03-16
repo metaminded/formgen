@@ -15,6 +15,7 @@ module Formgen
 
       if errors.any?
         flash[:notice] = errors_to_html(errors).html_safe
+        session[:formgen_reply] = params['reply']
       else
         flash[:notice] = t('.saved_reply_successfully')
       end
