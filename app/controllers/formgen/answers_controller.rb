@@ -4,13 +4,21 @@ module Formgen
   #
   class AnswersController < ApplicationController
     include QuestionsHelper
+    begin
+      include Formgen::AnswersControllerExtension
+    rescue Exception => e
+    end
 
     before_action :auth_user! unless Formgen.skip_answer_authentication
     before_action :find_reply, only: [:show]
 
     def create
       form = Form.find params[:id]
+
+      before_create(form) if respond_to?(:before_create)
       errors = save_reply(form)
+      after_create(form, errors) if respond_to?(:after_create)
+      
       FormMailer.send_mail(:notify, @reply) if errors.empty?
 
       if errors.any?
