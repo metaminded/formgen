@@ -15,11 +15,15 @@ module Formgen
     def create
       form = Form.find params[:id]
 
-      before_create(form) if respond_to?(:before_create)
-      errors = save_reply(form)
-      after_create(form, errors) if respond_to?(:after_create)
-      
-      FormMailer.send_mail(:notify, @reply) if errors.empty?
+      if form.allow_anonym_answer? || Formgen.can_answer_form.call(current_user)
+        before_create(form) if respond_to?(:before_create)
+        errors = save_reply(form)
+        after_create(form, errors) if respond_to?(:after_create)
+
+        FormMailer.send_mail(:notify, @reply) if errors.empty?
+      else
+        errors = [t('.not_allowed')]
+      end
 
       if errors.any?
         flash[:notice] = errors_to_html(errors).html_safe

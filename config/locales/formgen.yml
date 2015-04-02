@@ -4,7 +4,9 @@ en:
       formgen/answer:
         value: Answer
       formgen/form:
+        allow_anonym_answer: Allow anonym answers
         answers: Answers
+        email: Email
         questions: Questions
         title: Title
       formgen/question:
@@ -26,6 +28,9 @@ en:
       delete: Delete
     answers:
       create:
+        field_mandatory: "Please give an answer to the mandatory field %{question}"
+        field_not_valid: "%{question} wasn't answered correctly"
+        not_allowed: You are not allowed
         saved_reply_successfully: Your reply was successfully saved
       show:
         reply_by: "Reply by %{user}"
@@ -43,6 +48,7 @@ en:
       new:
         new_form: Create new formular
       output:
+        must_be_logged_in: Only Users, that are logged in, can use this Form.
         submit: Submit answers
       show:
         answers: Answers
@@ -90,6 +96,7 @@ de:
       formgen/answer:
         value: Antwort
       formgen/form:
+        allow_anonym_answer: Anonyme Antworten erlauben
         answers: Antworten
         email: Email
         path: Pfad
@@ -116,6 +123,7 @@ de:
       create:
         field_mandatory: "Bitte beantworte das Pflichtfeld %{question}"
         field_not_valid: "Das Feld %{question} wurde nicht korrekt beantwortet"
+        not_allowed: Formular darf nicht beantwortet werden
         saved_reply_successfully: Antwort wurde erfolgreich gespeichert
       show:
         reply_by: "Antwort von %{user}"
@@ -133,11 +141,12 @@ de:
       new:
         new_form: Neues Formular erstellen
       output:
+        must_be_logged_in: Nur angemeldete Benutzer können dieses Formular verwenden.
         submit: Absenden
       show:
         answers: Antworten
         close: Schließen
-        email: Email
+        email: E-Mail
         export: Als CSV exportieren
         mandatory: Pflichtfeld
         message: Mitteilung
@@ -160,7 +169,7 @@ de:
         date: Datum
         datetime: Datum mit Uhrzeit
         description: Beschreibung (keine Antworten erlaubt)
-        email: Email
+        email: E-Mail
         float: Zahl mit Nachkommastellen
         integer: Ganzzahl
         salutation: Anrede

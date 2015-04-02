@@ -110,6 +110,13 @@ To change this you can set the following flag.
 config.skip_answer_authentication = false
 ```
 
+To check, if a user can fill in a form, you can change the *Allow anonym answers* Flag while editing the form.
+If the flag is off, a method is called, to check, if the user is signed in.
+If the default isn't enough for you, you can change it with the following line.
+```ruby
+config.can_answer_form = proc { |user| user.present? }
+```
+
 ### Build your own question types
 ```ruby
 config.add_question_type 1001, 'My Type',

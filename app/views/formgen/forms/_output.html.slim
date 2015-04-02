@@ -4,10 +4,14 @@
   .alert.alert-info
     = raw flash[:notice]
 
-= form_tag formgen.answers_path(form), method: :post do
-  - reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].present? && options[:remember]
-  - form.questions.each do |question|
-    = render 'formgen/questions/question', question: question, options: options
+- if form.allow_anonym_answer? || Formgen.can_answer_form.call(current_user)
+  = form_tag formgen.answers_path(form), method: :post do
+    - reply = Formgen::Reply.find_by(form: form, user: current_user) if options[:remember].present? && options[:remember]
+    - form.questions.each do |question|
+      = render 'formgen/questions/question', question: question, options: options
 
-  - if form.questions.present?
-    = submit_tag options[:submit_text].present? ? options[:submit_text] : t('.submit'), class: 'btn btn-primary'
+    - if form.questions.present?
+      = submit_tag options[:submit_text].present? ? options[:submit_text] : t('.submit'), class: 'btn btn-primary'
+- else
+  .alert.alert-info
+    = t('.must_be_logged_in')
