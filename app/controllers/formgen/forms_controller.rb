@@ -52,7 +52,9 @@ module Formgen
     end
 
     def send_mail
-      FormMailer.inform_all(@form, params[:subject], params[:message]).deliver_later
+      @form.replies.map(&:user).uniq.compact.each do |user|
+        FormMailer.inform_all(user, params[:subject], params[:message]).deliver_later
+      end
       redirect_to formgen.form_path(@form)
     end
 
