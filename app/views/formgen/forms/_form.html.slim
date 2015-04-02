@@ -2,19 +2,12 @@
 
 = simple_nested_form_for form do |f|
   - unless options[:fields_only].present? && options[:fields_only]
-    .row
-      .col-md-12
-        = f.input :title
-    .row
-      .col-md-12
-        = f.input :path
-    .row
-      .col-md-12
-        = f.input :email
+    = f.input :title
+    = f.input :path
+    = f.input :email
+    = f.input :allow_anonym_answer, as: :boolean
 
   = render 'formgen/forms/questions', f: f, options: options
 
-  .row
-    .col-md-12
-      .well.centered
-        = f.button :submit, class: 'btn btn-primary'
+  .well.centered
+    = f.button :submit, class: 'btn btn-primary'
