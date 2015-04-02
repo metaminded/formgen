@@ -7,9 +7,8 @@ class FormMailer < ActionMailer::Base
     mail(to: email, subject: [Formgen.subject_prefix.presence, t('form_mailer.notify.new_notification_for', title: title)].join(" ").strip, template_name: 'notify')
   end
 
-  def inform_all(form, subject, message)
+  def inform_all(user, subject, message)
     @message = message
-    emails = form.replies.map { |reply| reply.user.email if reply.user.present? }.compact.uniq.join(';')
-    mail(to: emails, subject: [Formgen.subject_prefix.presence, subject].join(" ").strip, template_name: 'inform')
+    mail(to: user.email, subject: [Formgen.subject_prefix.presence, subject].join(" ").strip, template_name: 'inform')
   end
 end
