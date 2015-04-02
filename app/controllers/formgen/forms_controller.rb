@@ -52,7 +52,7 @@ module Formgen
     end
 
     def send_mail
-      FormMailer.send_mail(:inform_all, @form, params[:subject], params[:message])
+      FormMailer.inform_all(@form, params[:subject], params[:message]).deliver_later
       redirect_to formgen.form_path(@form)
     end
 

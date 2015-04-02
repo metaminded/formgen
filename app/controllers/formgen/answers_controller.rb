@@ -20,7 +20,7 @@ module Formgen
         errors = save_reply(form)
         after_create(form, errors) if respond_to?(:after_create)
 
-        FormMailer.send_mail(:notify, @reply) if errors.empty?
+        FormMailer.notify(@reply).deliver_later if errors.empty?
       else
         errors = [t('.not_allowed')]
       end
