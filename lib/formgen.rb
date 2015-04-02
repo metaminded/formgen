@@ -19,6 +19,9 @@ module Formgen
   mattr_accessor :skip_answer_authentication
   @@skip_answer_authentication = true
 
+  mattr_accessor :can_answer_form
+  @@can_answer_form = proc { |user| user.present? }
+
   def self.setup
     yield self
   end

@@ -2,21 +2,13 @@
 
 = simple_nested_form_for form do |f|
   - unless options[:fields_only].present? && options[:fields_only]
-    .row
-      .col-xs-12
-        = f.input :title
-    .row
-      .col-xs-12
-        = f.input :path
-    .row
-      .col-xs-12
-        = f.input :email
-    .row
-      .col-xs-12
-        = f.association :context_tags, as: :tag_chooser
+    = f.input :title
+    = f.input :path
+    = f.input :email
+    = f.association :context_tags, as: :tag_chooser
+    = f.input :allow_anonym_answer, as: :boolean
 
   = render 'formgen/forms/questions', f: f, options: options
 
-  .control-bar
+  .well.centered
     = f.button :submit, class: 'btn btn-primary'
-    = link_to t('action.cancel'), forms_path, class: 'btn btn-link'

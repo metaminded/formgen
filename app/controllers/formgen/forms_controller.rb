@@ -71,10 +71,11 @@ module Formgen
     end
 
     def form_params
-      params.require(:form).permit :title, :path, :email, context_tag_ids: [],
-                                    questions_attributes:
-                                      [:id, :position, :value, :language, :mandatory,
-                                       :question_type, :_destroy]
+      params.require(:form).permit :title, :path, :email, :allow_anonym_answer, context_tag_ids: [],
+                                    questions_attributes: [
+                                      :id, :position, :value, :language, :mandatory,
+                                      :question_type, :_destroy
+                                    ]
     end
   end
 end
