@@ -9,9 +9,9 @@ module Formgen
 
     def to_csv
       CSV.generate(force_quotes: true) do |csv|
-        csv << self.questions.map(&:value)
+        csv << self.questions.outputable.map(&:value)
         self.replies.each do |reply|
-          csv << reply.answers.map(&:value)
+          csv << reply.answers.outputable.map(&:value)
         end
       end
     end

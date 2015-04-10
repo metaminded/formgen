@@ -36,14 +36,14 @@
         thead
           tr
             th = t('.user')
-            - @form.questions.each do |question|
+            - @form.questions.outputable.each do |question|
               th = question.value
         tbody
           - @form.replies.each do |reply|
             tr
               // TODO: replace full_name with something more generic
               td = reply.user.full_name if reply.user.present?
-              - reply.answers.each do |answer|
+              - reply.answers.outputable.each do |answer|
                 td = render_value(answer)
 
 .row
