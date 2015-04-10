@@ -6,9 +6,11 @@
       = question_form.input :position
     .col-md-4
       = question_form.input :value
-    .col-md-2.col-xs-5
+    .col-md-2
+      = question_form.input :helptext
+    .col-md-1.col-xs-5
       = question_form.input :language, collection: %w{de en}
-    .col-md-3.col-xs-5
+    .col-md-2.col-xs-5
       = question_form.input :question_type, collection: Formgen::Question.t_types + Formgen::additional_question_types.map { |i, t| t[:title] }, value_method: lambda { |obj| Formgen::Question.index_of_type(obj).presence || Formgen::additional_question_types[obj.parameterize][:id] }
     .col-md-1.col-xs-1
       = question_form.input :mandatory

@@ -7,6 +7,6 @@ module Formgen
 
     default_scope -> { includes(:question).order('formgen_questions.position') }
 
-    scope :outputable, -> { joins(:question).where.not(formgen_questions: { question_type: 3 }) }
+    scope :outputable, -> { joins(:question).where.not(formgen_questions: { question_type: [3, 11, 12] }) }
   end
 end

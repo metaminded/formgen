@@ -12,6 +12,7 @@ en:
         questions: Questions
         title: Title
       formgen/question:
+        helptext: Helptext
         language: Language
         mandatory: Mandatory
         position: Position
@@ -76,8 +77,10 @@ en:
         date: Date
         datetime: Date with time
         description: Description (no answers allowed)
+        divider: Divider
         email: Email
         float: Floatingnumber
+        headline: Headline
         integer: Number
         salutation: Salutation
         string: Text
@@ -112,6 +115,7 @@ de:
         questions: Fragen
         title: Titel
       formgen/question:
+        helptext: Hilfetext
         language: Sprache
         mandatory: Verpflichtend
         position: Position
@@ -178,8 +182,10 @@ de:
         date: Datum
         datetime: Datum mit Uhrzeit
         description: Beschreibung (keine Antworten erlaubt)
+        divider: Trenner
         email: E-Mail
         float: Zahl mit Nachkommastellen
+        headline: Überschrift
         integer: Ganzzahl
         salutation: Anrede
         string: Text

@@ -14,40 +14,52 @@
         = hidden_field_tag question.field_name, 'false' unless question.mandatory
         = label_tag question.field_name, check_box_tag(question.field_name, 'true', value == 'true') + question.value, class: "boolean control-label #{classes}"
     - when 'date'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       .input-group.date
         = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
           = fa_icon('calendar')
     - when 'datetime'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       .input-group.datetime
         = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
           = fa_icon('calendar')
     - when 'description'
-      = content_tag :div, class: 'formgen-description' do
-        - question.value
+      = content_tag :div, question.value, class: 'formgen-description'
+    - when 'divider'
+      = content_tag :hr, nil, class: 'formgen-divider'
     - when 'email'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = email_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'float'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = number_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
+    - when 'headline'
+      h4.formgen-headline = question.value
     - when 'integer'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = number_field_tag question.field_name, value, step: 1.0, class: 'form-control', disabled: options[:disabled]
     - when 'salutation'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = select_tag question.field_name, options_for_select(t('formgen.salutations').each_with_object({}) { |(k,v), h| h[v] = k }, value), class: 'form-control', disabled: options[:disabled]
     - when 'string'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = text_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'text'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       = text_area_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
     - when 'time'
-      = label_tag question.field_name, question.value, class: classes
+      = label_tag question.field_name, class: classes do
+        - render_label(question)
       .input-group.time
         = time_field_tag question.field_name, value, class: 'form-control', disabled: options[:disabled]
         span.input-group-addon
