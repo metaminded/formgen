@@ -7,6 +7,8 @@ en:
         allow_anonym_answer: Allow anonym answers
         answers: Answers
         email: Email
+        email_confirm_subject: Subject for Confirmation Mails
+        email_confirm_body: Body for Confirmation Mails
         questions: Questions
         title: Title
       formgen/question:
@@ -84,6 +86,11 @@ en:
         time: Time
 
   notification_mailer:
+    confirm:
+      answer: Answer
+      created_at: "Created at %{date}"
+      new_confirmation_for: "Your answer to formular %{title}"
+      question: Question
     notify:
       answer: Answer
       by_user: "Answer of user %{user}"
@@ -101,6 +108,8 @@ de:
         answers: Antworten
         context_tags: Im Kontext von
         email: Email
+        email_confirm_subject: Betreff der Bestätigungsmail
+        email_confirm_body: Inhalt der Bestätigungsmail
         path: Pfad
         questions: Fragen
         title: Titel
@@ -180,6 +189,11 @@ de:
         text: Langtext
         time: Uhrzeit
   form_mailer:
+    confirm:
+      answer: Antwort
+      created_at: "Erstellt am %{date}"
+      new_confirmation_for: "Ihre Antwort auf Formular %{title}"
+      question: Frage
     notify:
       answer: Antwort
       by_user: "Antwort von Benutzer %{user}"

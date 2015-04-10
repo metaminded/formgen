@@ -1,0 +1,19 @@
+h2 = t('form_mailer.confirm.new_confirmation_for', title: @reply.form.title.presence || @reply.form.path)
+  / TODO: replace full_name with more generic method
+
+- if @reply.form.email_confirm_body.present?
+  = @reply.form.email_confirm_body
+
+table
+  thead
+    tr
+      th = t('.question')
+      th = t('.answer')
+  tbody
+    - @reply.answers.each do |answer|
+      - next if Formgen::Question::TYPES[answer.question.question_type] == 'description'
+      tr
+        td = answer.question.value
+        td = answer.value
+
+= t('.created_at', date: l(Time.zone.now))

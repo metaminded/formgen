@@ -7,6 +7,8 @@
     = f.input :email
     = f.association :context_tags, as: :tag_chooser
     = f.input :allow_anonym_answer, as: :boolean
+    = f.input :email_confirm_subject
+    = f.input :email_confirm_body
 
   = render 'formgen/forms/questions', f: f, options: options
 

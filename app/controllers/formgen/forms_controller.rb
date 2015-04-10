@@ -73,7 +73,9 @@ module Formgen
     end
 
     def form_params
-      params.require(:form).permit :title, :path, :email, :allow_anonym_answer, context_tag_ids: [],
+      params.require(:form).permit :title, :path, :email, :allow_anonym_answer,
+                                   :email_confirm_subject, :email_confirm_body,
+                                   context_tag_ids: [],
                                     questions_attributes: [
                                       :id, :position, :value, :language, :mandatory,
                                       :question_type, :_destroy
