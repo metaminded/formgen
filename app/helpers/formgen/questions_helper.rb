@@ -30,8 +30,10 @@ module Formgen
       when 'date' then        (DateTime.parse(value) rescue nil)
       when 'datetime' then    (DateTime.parse(value) rescue nil)
       when 'description' then !value
+      when 'divider' then     !value
       when 'email' then       !!(value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)
       when 'float' then       value == 0 || value.to_f != 0.0
+      when 'headline' then    !value
       when 'integer' then     value == 0 || value.to_i != 0
       when 'salutation' then  I18n.t('formgen.salutations').keys.include?(value.to_sym)
       when 'string' then      true
@@ -73,6 +75,13 @@ module Formgen
           when 'boolean' then I18n.t("formgen.booleans.#{answer.value.to_s}") if answer.value.present?
           else answer.value
         end
+      end
+    end
+
+    def render_label(question)
+      concat(question.value)
+      if question.helptext.present?
+        concat(fa_icon(:'info-circle', data: { toggle: 'tooltip' }, title: question.helptext))
       end
     end
   end
