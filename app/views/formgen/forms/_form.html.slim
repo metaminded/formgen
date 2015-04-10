@@ -6,6 +6,8 @@
     = f.input :path
     = f.input :email
     = f.input :allow_anonym_answer, as: :boolean
+    = f.input :email_confirm_subject
+    = f.input :email_confirm_body
 
   = render 'formgen/forms/questions', f: f, options: options
 
