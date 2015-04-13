@@ -35,7 +35,9 @@ module Formgen
       when 'float' then       value == 0 || value.to_f != 0.0
       when 'headline' then    !value
       when 'integer' then     value == 0 || value.to_i != 0
+      when 'radio' then       question.options.include?(value)
       when 'salutation' then  I18n.t('formgen.salutations').keys.include?(value.to_sym)
+      when 'select' then      question.options.include?(value)
       when 'string' then      true
       when 'text' then        true
       when 'time' then        (DateTime.parse(value) rescue nil)
