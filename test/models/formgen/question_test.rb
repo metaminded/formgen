@@ -6,7 +6,7 @@ module Formgen
       types = Question.t_types
       expected = ["Yes/No", "Date", "Date with time", "Description (no answers allowed)",
                   "Email", "Floatingnumber", "Number", "Text", "Longtext", "Time", "Salutation",
-                  "Divider", "Headline"]
+                  "Divider", "Headline", "Select-Box", "Radio-Buttons"]
       assert(types == expected)
     end
 
@@ -22,6 +22,10 @@ module Formgen
       assert(Question.index_of_type('Longtext') == 8)
       assert(Question.index_of_type('Time') == 9)
       assert(Question.index_of_type('Salutation') == 10)
+      assert(Question.index_of_type('Divider') == 11)
+      assert(Question.index_of_type('Headline') == 12)
+      assert(Question.index_of_type('Select-Box') == 13)
+      assert(Question.index_of_type('Radio-Buttons') == 14)
     end
   end
 end
