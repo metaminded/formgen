@@ -5,7 +5,8 @@ module Formgen
     test "translated question types" do
       types = Question.t_types
       expected = ["Yes/No", "Date", "Date with time", "Description (no answers allowed)",
-                  "Email", "Floatingnumber", "Number", "Text", "Longtext", "Time", "Salutation"]
+                  "Email", "Floatingnumber", "Number", "Text", "Longtext", "Time", "Salutation",
+                  "Divider", "Headline"]
       assert(types == expected)
     end
 

@@ -1,11 +1,22 @@
 = f.input :form_id, as: :hidden if options[:embedded]
 
 = f.fields_for :questions do |question_form|
+  = @formgen_question_index
   .row.form-group
     .col-md-1
       = question_form.input :position
-    .col-md-4
+    .value class="#{[13, 14].include?(question_form.object.question_type) ? 'col-md-2' : 'col-md-4'}"
       = question_form.input :value
+    .col-md-2.options class="#{[13, 14].include?(question_form.object.question_type) ? '' : 'hidden'}"
+      .template.hidden
+        .row
+          .col-xs-10 = question_form.input :options, as: :string, label: false
+          .col-xs-2
+            button.btn.btn-sm.btn-default.remove-option type="button" = fa_icon(:minus)
+      .form-group
+        label.control-label Optionen
+        .option-fields data-fields="#{[13, 14].include?(question_form.object.question_type) ? question_form.object.options.to_json : ''}"
+        button.btn.btn-sm.btn-default.add-option type="button" = fa_icon(:plus)
     .col-md-2
       = question_form.input :helptext
     .col-md-1.col-xs-5
@@ -19,4 +30,4 @@
 
 .row.form-group
   .col-md-12
-    = f.link_to_add fa_icon('plus'), :questions, class: 'pull-right btn btn-sm btn-default'
+    = f.link_to_add fa_icon(:plus), :questions, class: 'pull-right btn btn-sm btn-default'

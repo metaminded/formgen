@@ -1,9 +1,11 @@
 module Formgen
   class Question < ActiveRecord::Base
-    TYPES = %w{boolean date datetime description email float integer string text time salutation divider headline}
+    TYPES = %w{boolean date datetime description email float integer string text time salutation divider headline select radio}
 
     belongs_to :form, inverse_of: :questions, touch: true
     has_many :answers
+
+    serialize :options
 
     validates :value, presence: true
     validates :question_type, presence: true

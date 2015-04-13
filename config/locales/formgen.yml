@@ -83,6 +83,8 @@ en:
         float: Floatingnumber
         headline: Headline
         integer: Number
+        radio: Radio-Buttons
+        select: Select-Box
         salutation: Salutation
         string: Text
         text: Longtext
@@ -190,7 +192,9 @@ de:
         float: Zahl mit Nachkommastellen
         headline: Überschrift
         integer: Ganzzahl
+        radio: Radio-Buttons
         salutation: Anrede
+        select: Auswahlbox
         string: Text
         text: Langtext
         time: Uhrzeit

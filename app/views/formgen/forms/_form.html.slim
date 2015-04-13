@@ -13,4 +13,45 @@
   = render 'formgen/forms/questions', f: f, options: options
 
   .well.centered
-    = f.button :submit, class: 'btn btn-primary'
+    button.btn.btn-primary.submit type="button" Formular aktualisieren
+    / = f.button :submit, class: 'btn btn-primary'
+
+coffee:
+  $(document).on 'change', '.form_questions_question_type select', (e) ->
+    $el = $(e.currentTarget)
+    $row = $el.parents('.fields')
+    if $el.val() == '13' || $el.val() == '14'
+      $row.find('.options').removeClass('hidden')
+      $row.find('.value').removeClass('col-md-4').addClass('col-md-2')
+    else
+      $row.find('.options').addClass('hidden')
+      $row.find('.value').removeClass('col-md-2').addClass('col-md-4')
+
+  $(document).on 'click', '.add-option', (e) ->
+    $el = $(e.currentTarget)
+    $opts = $el.parents('.options')
+    $fields = $opts.find('.option-fields')
+    tmpl = $opts.find('.template').html()
+    tmpl = tmpl.replace(/\[options\]/, "[options][]")
+    $fields.append(tmpl)
+    $fields.find('input:last').val('')
+
+  $(document).on 'click', '.remove-option', (e) ->
+    $el = $(e.currentTarget)
+    $el.closest('.row').detach()
+
+  $(document).ready () ->
+    $fields = $('.options .option-fields')
+    $fields.each (i, field) ->
+      options = $(field).data('fields')
+      return unless options
+      options.forEach (value) ->
+        tmpl = $(field).parents('.options').find('.template').html()
+        tmpl = tmpl.replace(/\[options\]/, "[options][]")
+        $(field).append(tmpl)
+        $(field).find('input:last').val(value)
+      $(field).data('fields', '')
+
+  $(document).on 'click', 'button.submit', (e) ->
+    $('.options .template').detach()
+    $('form').submit()

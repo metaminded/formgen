@@ -78,7 +78,7 @@ module Formgen
                                    context_tag_ids: [],
                                     questions_attributes: [
                                       :id, :position, :value, :language, :mandatory,
-                                      :helptext, :question_type, :_destroy
+                                      :helptext, :question_type, :_destroy, options: []
                                     ]
     end
   end
