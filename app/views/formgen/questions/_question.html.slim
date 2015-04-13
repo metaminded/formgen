@@ -60,7 +60,7 @@
     - when 'select'
       = label_tag question.field_name, class: classes do
         - render_label(question)
-      = select_tag question.field_name, options_for_select(question.options, value), class: 'form-control', disabled: options[:disabled]
+      = select_tag question.field_name, options_for_select(question.options, value), class: 'form-control', disabled: options[:disabled], include_blank: !question.mandatory?
     - when 'string'
       = label_tag question.field_name, class: classes do
         - render_label(question)

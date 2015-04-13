@@ -13,8 +13,7 @@
   = render 'formgen/forms/questions', f: f, options: options
 
   .well.centered
-    button.btn.btn-primary.submit type="button" Formular aktualisieren
-    / = f.button :submit, class: 'btn btn-primary'
+    = f.button :submit, class: 'btn btn-primary submit', type: 'button'
 
 coffee:
   $(document).on 'change', '.form_questions_question_type select', (e) ->
@@ -52,6 +51,6 @@ coffee:
         $(field).find('input:last').val(value)
       $(field).data('fields', '')
 
-  $(document).on 'click', 'button.submit', (e) ->
+  $(document).on 'click', 'input.submit', (e) ->
     $('.options .template').detach()
     $('form').submit()

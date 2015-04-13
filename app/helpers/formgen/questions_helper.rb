@@ -83,6 +83,7 @@ module Formgen
     def render_label(question)
       concat(question.value)
       if question.helptext.present?
+        concat(' ')
         concat(fa_icon(:'info-circle', data: { toggle: 'tooltip' }, title: question.helptext))
       end
     end
