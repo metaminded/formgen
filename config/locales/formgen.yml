@@ -6,6 +6,7 @@ en:
       formgen/form:
         allow_anonym_answer: Allow anonym answers
         answers: Answers
+        created_at: Created
         email: Email
         email_confirm_subject: Subject for Confirmation Mails
         email_confirm_body: Body for Confirmation Mails
@@ -110,6 +111,7 @@ de:
       formgen/form:
         allow_anonym_answer: Anonyme Antworten erlauben
         answers: Antworten
+        created_at: Erstellt am
         email: Email
         email_confirm_subject: Betreff der Bestätigungsmail
         email_confirm_body: Inhalt der Bestätigungsmail

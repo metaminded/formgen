@@ -9,9 +9,9 @@ module Formgen
 
     def to_csv
       CSV.generate(force_quotes: true) do |csv|
-        csv << self.questions.outputable.map(&:value)
+        csv << self.questions.outputable.map(&:value) + [I18n.t('activerecord.attributes.formgen/form.created_at')]
         self.replies.each do |reply|
-          csv << reply.answers.outputable.map(&:value)
+          csv << reply.answers.outputable.map(&:value) + [I18n.l(reply.created_at)]
         end
       end
     end
