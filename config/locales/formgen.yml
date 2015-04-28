@@ -109,7 +109,7 @@ de:
       formgen/answer:
         value: Antwort
       formgen/form:
-        allow_anonym_answer: Anonyme Antworten erlauben
+        allow_anonym_answer: Benutzern erlauben, das Formular ohne Anmeldung/Login auszufüllen und abzusenden
         answers: Antworten
         created_at: Erstellt am
         email: Email
