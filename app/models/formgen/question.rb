@@ -3,7 +3,7 @@ module Formgen
     TYPES = %w{boolean date datetime description email float integer string text time salutation divider headline select radio}
 
     belongs_to :form, inverse_of: :questions, touch: true
-    has_many :answers
+    has_many :answers, dependent: :destroy
 
     serialize :options
 

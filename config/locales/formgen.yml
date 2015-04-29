@@ -38,6 +38,9 @@ en:
         saved_reply_successfully: Your reply was successfully saved
       show:
         reply_by: "Reply by %{user}"
+      destroy_all:
+        success: All replies were successfully deleted
+        failure: Replies could not be deleted
     booleans:
       "false": No
       "true": Yes
@@ -67,6 +70,7 @@ en:
         send_mail_to_answerers: Send email to Users
         submit: Send
         type: Type
+        delete_answers: Delete answers
       update:
         update_success: Form updated successfully
     salutations:
@@ -144,6 +148,9 @@ de:
         saved_reply_successfully: Antwort wurde erfolgreich gespeichert
       show:
         reply_by: "Antwort von %{user}"
+      destroy_all:
+        success: Alle Antworten wurden erfolgreich gelöscht
+        failure: Antworten konnten nicht gelöscht werden
     booleans:
       "false": Nein
       "true": Ja
@@ -175,6 +182,7 @@ de:
         subject: Betreff
         submit: Absenden
         type: Typ
+        delete_answers: Antworten löschen
       update:
         update_success: Formular erfolgreich geändert
     salutations:
