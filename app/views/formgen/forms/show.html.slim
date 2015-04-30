@@ -49,7 +49,9 @@
 .row
   .col-md-4
     button.btn.btn-primary data-toggle="modal" data-target="#mail-answerers" = t('.send_mail_to_answerers')
-  .col-md-4.col-md-offset-4
+  .col-md-4
+    = link_to t('.delete_answers'), destroy_all_answers_path, method: :delete, class: 'btn btn-warning', 'data-confirm' => t('formgen.action.are_you_sure')
+  .col-md-4
     = link_to t('.export'), export_form_path, class: 'btn btn-default pull-right'
 
 = form_tag mail_form_path(@form) do
