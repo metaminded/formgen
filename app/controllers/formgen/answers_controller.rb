@@ -38,6 +38,15 @@ module Formgen
       redirect_to :back
     end
 
+    def destroy_all
+      form = Form.find params[:id]
+      if form.replies.destroy_all
+        redirect_to form_path(form), notice: t('.success')
+      else
+        redirect_to form_path(form), alert: t('.failure')
+      end
+    end
+
     private
 
     def find_reply

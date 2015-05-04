@@ -14,7 +14,7 @@ module Formgen
       form.questions << Question.create!(question_type: 6, value: 'What is the Answer to the Question of Life, the Universe, and Everything?')
       form.save!
 
-      expected = "\"Are you sure?\",\"What is the Answer to the Question of Life, the Universe, and Everything?\"\n"
+      expected = "\"Are you sure?\",\"What is the Answer to the Question of Life, the Universe, and Everything?\",\"Created\"\n"
       assert(form.to_csv == expected)
     end
   end
