@@ -22,6 +22,9 @@ module Formgen
   mattr_accessor :can_answer_form
   @@can_answer_form = proc { |user| user.present? }
 
+  mattr_accessor :route_namespace
+  @@route_namespace = ''
+
   def self.setup
     yield self
   end

@@ -5,7 +5,7 @@ module Formgen
   class FormsController < ApplicationController
     include QuestionsHelper
 
-    before_action :auth_user! unless Formgen.skip_authentication
+    before_action :authenticate_user! unless Formgen.skip_authentication
     before_action :find_form, only: [:edit, :update, :destroy]
     before_action :find_form_with_answers, only: [:show, :send_mail, :export]
 
@@ -77,7 +77,7 @@ module Formgen
                                    :email_confirm_subject, :email_confirm_body,
                                     questions_attributes: [
                                       :id, :position, :value, :language, :mandatory,
-                                      :helptext, :question_type, :_destroy, options: []
+                                      :helptext, :question_type, :_destroy, options: [], options: ''
                                     ]
     end
   end

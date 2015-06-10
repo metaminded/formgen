@@ -9,7 +9,7 @@ module Formgen
     rescue Exception => e
     end
 
-    before_action :auth_user! unless Formgen.skip_answer_authentication
+    before_action :authenticate_user! unless Formgen.skip_answer_authentication
     before_action :find_reply, only: [:show]
 
     def create
