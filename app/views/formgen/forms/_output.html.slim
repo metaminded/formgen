@@ -1,8 +1,12 @@
 - options ||= {}
 
-- if flash[:notice] && (options[:flash].nil? || options[:flash])
-  .alert.alert-info
-    = raw flash[:notice]
+- if options[:flash].nil? || options[:flash]
+  - levels = { success: 'success', notice: 'info', error: 'danger', alert: 'warning'}
+  - levels.keys.each do |level|
+    - unless flash[level].blank?
+      .alert class="alert-#{levels[level]}"
+        button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+        p = raw flash[level]
 
 - if form.allow_anonym_answer? || Formgen.can_answer_form.call(current_user)
   = form_tag formgen.answers_path(form), method: :post do

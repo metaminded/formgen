@@ -26,7 +26,7 @@ module Formgen
     def create
       @form = Form.new(form_params)
       if @form.save
-        flash['notice'] = t('.create_success')
+        flash['success'] = t('.create_success')
         redirect_to formgen.forms_path
       else
         render :new
@@ -35,7 +35,7 @@ module Formgen
 
     def update
       if @form.update(form_params)
-        flash['notice'] = t('.update_success')
+        flash['error'] = t('.update_success')
         redirect_to formgen.forms_path
       else
         render :edit
