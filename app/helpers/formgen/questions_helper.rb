@@ -56,7 +56,7 @@ module Formgen
         end
 
         form.questions.each do |question|
-          missing_field_error(errors, question) if question.mandatory && !params[:reply][question.id.to_s].present?
+          missing_field_error(errors, question) if question.mandatory && question.language == I18n.locale.to_s && !params[:reply][question.id.to_s].present?
           validate_field_error(errors, question) if !valid?(question, params[:reply][question.id.to_s]) && params[:reply][question.id.to_s].present?
           a = Answer.find_or_initialize_by reply: @reply, question: question
           a.value = params[:reply][question.id.to_s]

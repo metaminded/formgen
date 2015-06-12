@@ -12,6 +12,7 @@ module Formgen
 
     default_scope -> { order(:position) }
 
+    scope :locale, ->(locale) { where(language: locale.to_s) }
     scope :outputable, -> { where.not(question_type: [3, 11, 12]) }
 
     def self.t_types

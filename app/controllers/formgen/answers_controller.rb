@@ -13,8 +13,11 @@ module Formgen
     before_action :find_reply, only: [:show]
 
     def create
-      form = Form.find params[:id]
+      if I18n.locale.to_s != params['locale'] && I18n.available_locales.include?(params['locale'].to_sym)
+        I18n.locale = params['locale'].to_sym
+      end
 
+      form = Form.find params[:id]
       if form.allow_anonym_answer? || Formgen.can_answer_form.call(current_user)
         before_create(form) if respond_to?(:before_create)
         errors = save_reply(form)
