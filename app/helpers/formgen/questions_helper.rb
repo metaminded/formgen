@@ -18,7 +18,7 @@ module Formgen
     end
 
     def errors_to_html errors
-      output = "<ul>"
+      output = '<ul class="list-unstyled">'
       errors.each { |error| output << "<li>#{error}</li>" }
       output << "</ul>"
       output
