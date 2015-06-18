@@ -20,7 +20,7 @@
     .col-md-2
       = question_form.input :helptext
     .col-md-1.col-xs-5
-      = question_form.input :language, collection: %w{de en}
+      = question_form.input :language, collection: I18n.available_locales.map(&:to_s)
     .col-md-2.col-xs-5
       = question_form.input :question_type, collection: Formgen::Question.t_types + Formgen::additional_question_types.map { |i, t| t[:title] }, value_method: lambda { |obj| Formgen::Question.index_of_type(obj).presence || Formgen::additional_question_types[obj.parameterize][:id] }
     .col-md-1.col-xs-1
