@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/simkimsia/UtilityBehaviors.png)](https://travis-ci.org/hanspolo/formgen)
 [![Dependency Status](https://gemnasium.com/renspr/bsat.svg)](https://gemnasium.com/hanspolo/formgen)
+[![Code Climate](https://codeclimate.com/github/hanspolo/formgen/badges/gpa.svg)](https://codeclimate.com/github/hanspolo/formgen)
 
 ## Requirements
 
