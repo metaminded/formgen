@@ -1,6 +1,10 @@
 require 'csv'
 
 module Formgen
+  ##
+  # Forms are the basic model of formgen.
+  # They are created and embedded into the site.
+  #
   class Form < ActiveRecord::Base
     has_many :questions, inverse_of: :form, dependent: :destroy
     accepts_nested_attributes_for :questions, allow_destroy: true

@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Formgen
   class QuestionsHelperTest < ActionView::TestCase
-    test "validation of answers" do
+    test 'validation of answers' do
       q = Question.new(question_type: 0, value: 'foo')  # Boolean
       assert(valid?(q, 'false'))
       assert(valid?(q, 'true'))
@@ -23,13 +23,13 @@ module Formgen
       q.question_type = 5                               # Float
       assert(valid?(q, 15))
       assert(valid?(q, 1.5))
-      assert(valid?(q, "1.5"))
+      assert(valid?(q, '1.5'))
       assert_not(valid?(q, 'Five'))
 
       q.question_type = 6                               # Integer
       assert(valid?(q, 15))
       assert(valid?(q, 1.5))
-      assert(valid?(q, "1.5"))
+      assert(valid?(q, '1.5'))
       assert_not(valid?(q, 'Five'))
 
       q.question_type = 7                               # String
@@ -45,7 +45,7 @@ module Formgen
       assert_not(valid?(q, 'Catwoman'))
     end
 
-    test "rendering of answers" do
+    test 'rendering of answers' do
 
     end
   end

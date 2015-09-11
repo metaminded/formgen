@@ -76,8 +76,9 @@ module Formgen
       params.require(:form).permit :title, :path, :email, :allow_anonym_answer,
                                    :email_confirm_subject, :email_confirm_body,
                                     questions_attributes: [
-                                      :id, :position, :value, :language, :mandatory,
-                                      :helptext, :question_type, :_destroy, options: [], options: ''
+                                      :id, :position, :value, :language,
+                                      :mandatory, :helptext, :question_type,
+                                      options: [], options: '', :_destroy
                                     ]
     end
   end

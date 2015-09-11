@@ -2,15 +2,15 @@ require 'test_helper'
 
 module Formgen
   class QuestionTest < ActiveSupport::TestCase
-    test "translated question types" do
+    test 'translated question types' do
       types = Question.t_types
-      expected = ["Yes/No", "Date", "Date with time", "Description (no answers allowed)",
-                  "Email", "Floatingnumber", "Number", "Text", "Longtext", "Time", "Salutation",
-                  "Divider", "Headline", "Select-Box", "Radio-Buttons"]
+      expected = ['Yes/No', 'Date', 'Date with time', 'Description (no answers allowed)',
+                  'Email', 'Floatingnumber', 'Number', 'Text', 'Longtext', 'Time', 'Salutation',
+                  'Divider', 'Headline', 'Select-Box', 'Radio-Buttons']
       assert(types == expected)
     end
 
-    test "index of question type" do
+    test 'index of question type' do
       assert(Question.index_of_type('Yes/No') == 0)
       assert(Question.index_of_type('Date') == 1)
       assert(Question.index_of_type('Date with time') == 2)

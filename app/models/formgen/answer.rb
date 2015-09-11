@@ -1,4 +1,7 @@
 module Formgen
+  ##
+  # An answer stores the values given in response to a question.
+  #
   class Answer < ActiveRecord::Base
     belongs_to :reply
     belongs_to :question, touch: true

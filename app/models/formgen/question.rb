@@ -1,6 +1,10 @@
 module Formgen
+  ##
+  # A form contains multiple questions.
+  # When viewing the form, the questions are rendered.
+  #
   class Question < ActiveRecord::Base
-    TYPES = %w{boolean date datetime description email float integer string text time salutation divider headline select radio}
+    TYPES = %w(boolean date datetime description email float integer string text time salutation divider headline select radio)
 
     belongs_to :form, inverse_of: :questions, touch: true
     has_many :answers, dependent: :destroy
