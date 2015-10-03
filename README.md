@@ -1,6 +1,7 @@
 # Formgen
 
 [![Build Status](https://travis-ci.org/simkimsia/UtilityBehaviors.png)](https://travis-ci.org/hanspolo/formgen)
+[![Build Status Codeship](https://codeship.com/projects/106352/status?branch=master)](https://codeship.com/projects/106352)
 [![Dependency Status](https://gemnasium.com/renspr/bsat.svg)](https://gemnasium.com/hanspolo/formgen)
 [![Code Climate](https://codeclimate.com/github/hanspolo/formgen/badges/gpa.svg)](https://codeclimate.com/github/hanspolo/formgen)
 
