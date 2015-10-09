@@ -1,8 +1,8 @@
 module Formgen
-
-  search :title, :path
-
   class FormTabulatrData < Tabulatr::Data
+
+    search :title, :path
+
     buttons do |b, r|
       b.button :eye,  formgen.form_path(r.id)
       b.button :pencil, formgen.edit_form_path(r.id)
