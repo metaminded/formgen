@@ -16,10 +16,10 @@ module Formgen
 
     column :title
     column :path
-    column :questions, table_column_options: { sortable: false, filter: false } do |record|
+    column :questions, sortable: false, filter: false do |record|
       record.questions.count.to_s
     end
-    column :answers, table_column_options: { sortable: false, filter: false } do |record|
+    column :answers, sortable: false, filter: false do |record|
       record.replies.count.to_s
     end
   end
