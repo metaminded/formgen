@@ -77,8 +77,8 @@ module Formgen
                                    :email_confirm_subject, :email_confirm_body,
                                     questions_attributes: [
                                       :id, :position, :value, :language,
-                                      :mandatory, :helptext, :question_type,
-                                      options: [], options: '', :_destroy
+                                      :mandatory, :helptext, :question_type, :_destroy,
+                                      options: [], options: ''
                                     ]
     end
   end
