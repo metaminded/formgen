@@ -10,7 +10,7 @@ module Formgen
     validates :value, presence: true
     validates :question_type, presence: true
 
-    default_scope -> { order(:position) }
+    default_scope -> { order(position: :asc, id: :asc) }
 
     scope :outputable, -> { where.not(question_type: [3, 11, 12]) }
 
